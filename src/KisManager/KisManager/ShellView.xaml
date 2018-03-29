@@ -3,6 +3,7 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         Title="{DynamicResource AppName}" TitleAlignment="Center"
         xmlns:cal="http://www.caliburnproject.org"
+                      Width="1280" Height="768"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Controls:MetroWindow.LeftWindowCommands>
         <Controls:WindowCommands >

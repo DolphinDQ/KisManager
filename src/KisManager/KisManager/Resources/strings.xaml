@@ -11,5 +11,23 @@
     <sys:String x:Key="PersonalSalesPerformance">个人销售业绩</sys:String>
     <sys:String x:Key="SalesPerformanceReport">预算报表</sys:String>
     <sys:String x:Key="ClassList">科目表</sys:String>
+    <sys:String x:Key="AreaName">区域名称</sys:String>
+    <sys:String x:Key="YearSummary">年度统计</sys:String>
+    <sys:String x:Key="ExpectPerformance">计划业绩</sys:String>
+    <sys:String x:Key="ActualPerformance">实际业绩</sys:String>
+    <sys:String x:Key="DifferentOfPerformance">差值</sys:String>
+    <sys:String x:Key="Mouth1">一月份</sys:String>
+    <sys:String x:Key="Mouth2">二月份</sys:String>
+    <sys:String x:Key="Mouth3">三月份</sys:String>
+    <sys:String x:Key="Mouth4">四月份</sys:String>
+    <sys:String x:Key="Mouth5">五月份</sys:String>
+    <sys:String x:Key="Mouth6">六月份</sys:String>
+    <sys:String x:Key="Mouth7">七月份</sys:String>
+    <sys:String x:Key="Mouth8">八月份</sys:String>
+    <sys:String x:Key="Mouth9">九月份</sys:String>
+    <sys:String x:Key="Mouth10">十月份</sys:String>
+    <sys:String x:Key="Mouth11">十一月份</sys:String>
+    <sys:String x:Key="Mouth12">十二月份</sys:String>
+
 
 </ResourceDictionary>
