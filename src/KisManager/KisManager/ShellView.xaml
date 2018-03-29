@@ -1,32 +1,34 @@
-<Controls:MetroWindow x:Class="KisManager.ShellView"
+﻿<Controls:MetroWindow x:Class="KisManager.ShellView"
         xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        Title="{DynamicResource AppName}"
+        Title="{DynamicResource AppName}" TitleAlignment="Center"
+        xmlns:cal="http://www.caliburnproject.org"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <Controls:MetroWindow.RightWindowCommands>
-        <Controls:WindowCommands>
-            <Button Content="settings" />
-            <Button>
+    <Controls:MetroWindow.LeftWindowCommands>
+        <Controls:WindowCommands >
+            <Button cal:Message.Attach="Nav('IHome')">
                 <StackPanel Orientation="Horizontal">
-                    <Rectangle Width="20"
-                   Height="20"
-                   Fill="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Foreground}">
+                    <Rectangle Width="20" Height="20" Fill="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Foreground}">
                         <Rectangle.OpacityMask>
-                            <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_cupcake}" />
+                            <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_home}" />
                         </Rectangle.OpacityMask>
                     </Rectangle>
-                    <TextBlock Margin="4 0 0 0"
-                   VerticalAlignment="Center"
-                   Text="deploy cupcakes" />
+                    <TextBlock Margin="4 0 0 0"  VerticalAlignment="Center" Text="{DynamicResource Home}" />
+                </StackPanel>
+            </Button>
+            <Button cal:Message.Attach="Nav('ISettings')">
+                <StackPanel Orientation="Horizontal">
+                    <Rectangle Width="20" Height="20" Fill="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Foreground}">
+                        <Rectangle.OpacityMask>
+                            <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_settings}" />
+                        </Rectangle.OpacityMask>
+                    </Rectangle>
+                    <TextBlock Margin="4 0 0 0"  VerticalAlignment="Center" Text="{DynamicResource Settings}" />
                 </StackPanel>
             </Button>
         </Controls:WindowCommands>
-    </Controls:MetroWindow.RightWindowCommands>
-    <Grid Background="White">
-        <TextBlock Text="Hello Caliburn Micro!"
-                   VerticalAlignment="Center"
-                   HorizontalAlignment="Center"
-                   FontSize="20" />
+    </Controls:MetroWindow.LeftWindowCommands>
+    <Grid>
+        <Controls:TransitioningContentControl cal:View.Model="{Binding ActiveItem}"/>
     </Grid>
-
 </Controls:MetroWindow>

@@ -13,6 +13,8 @@
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -49,6 +51,12 @@
     <Reference Include="MahApps.Metro, Version=1.6.1.4, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MahApps.Metro.1.6.1\lib\net45\MahApps.Metro.dll</HintPath>
     </Reference>
+    <Reference Include="MahApps.Metro.IconPacks, Version=2.2.0.12, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MahApps.Metro.IconPacks.2.2.0\lib\net46\MahApps.Metro.IconPacks.dll</HintPath>
+    </Reference>
+    <Reference Include="PropertyChanged, Version=2.2.9.0, Culture=neutral, PublicKeyToken=ee3ee20bcf148ddd, processorArchitecture=MSIL">
+      <HintPath>..\packages\PropertyChanged.Fody.2.2.9\lib\net452\PropertyChanged.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -73,12 +81,51 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="AppBootstrapper.cs" />
-    <Compile Include="IShell.cs" />
+    <Compile Include="Common\TextProvider.cs" />
+    <Compile Include="Interfaces\ICreator.cs" />
+    <Compile Include="Interfaces\IHome.cs" />
+    <Compile Include="Interfaces\ISettings.cs" />
+    <Compile Include="Interfaces\IShell.cs" />
+    <Compile Include="Interfaces\IModule.cs" />
+    <Compile Include="Interfaces\ITextProvider.cs" />
+    <Compile Include="ViewModels\HomeViewModel.cs" />
+    <Compile Include="ViewModels\SettingsViewModel.cs" />
     <Compile Include="ShellViewModel.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="ViewModels\TabModulsBase.cs" />
+    <Compile Include="ViewModels\TabAreaSalesPerformanceViewModel.cs" />
+    <Compile Include="ViewModels\TabPersonalSalesPerformanceViewModel.cs" />
+    <Compile Include="ViewModels\TabSalesPerformanceReportViewModel.cs" />
+    <Compile Include="ViewModels\TabSetDepartmentViewModel.cs" />
+    <Compile Include="ViewModels\TabSetEmploymentViewModel.cs" />
+    <Compile Include="Views\HomeView.xaml.cs">
+      <DependentUpon>HomeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SettingsView.xaml.cs">
+      <DependentUpon>SettingsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TabAreaSalesPerformanceView.xaml.cs">
+      <DependentUpon>TabAreaSalesPerformanceView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TabPersonalSalesPerformanceView.xaml.cs">
+      <DependentUpon>TabPersonalSalesPerformanceView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TabSalesPerformanceReportView.xaml.cs">
+      <DependentUpon>TabSalesPerformanceReportView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TabSetDepartmentView.xaml.cs">
+      <DependentUpon>TabSetDepartmentView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TabSetEmploymentView.xaml.cs">
+      <DependentUpon>TabSetEmploymentView.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Resources\GlobalStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Resources\Icons.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -92,8 +139,36 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ShellView.xaml">
-      <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\HomeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SettingsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TabAreaSalesPerformanceView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TabPersonalSalesPerformanceView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TabSalesPerformanceReportView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TabSetDepartmentView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TabSetEmploymentView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
@@ -130,5 +205,18 @@
   <ItemGroup>
     <Resource Include="Resources\Entypo-license.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="FodyWearvers.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="FodyWeavers.xml" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\Fody.2.4.6\build\Fody.targets" Condition="Exists('..\packages\Fody.2.4.6\build\Fody.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Fody.2.4.6\build\Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Fody.2.4.6\build\Fody.targets'))" />
+  </Target>
 </Project>

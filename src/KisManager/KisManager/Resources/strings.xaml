@@ -2,6 +2,14 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:sys ="clr-namespace:System;assembly=mscorlib"
                     xmlns:local="clr-namespace:KisManager.Resources">
-    <sys:String x:Key="AppName">预算管理</sys:String>
+    <sys:String x:Key="AppName">销售业绩管理</sys:String>
+    <sys:String x:Key="Home">首页</sys:String>
+    <sys:String x:Key="Settings">设置</sys:String>
+    <sys:String x:Key="SetDepartment">设置部门</sys:String>
+    <sys:String x:Key="SetEmployment">设置职员</sys:String>
+    <sys:String x:Key="AreaSalesPerformance">区域销售业绩</sys:String>
+    <sys:String x:Key="PersonalSalesPerformance">个人销售业绩</sys:String>
+    <sys:String x:Key="SalesPerformanceReport">预算报表</sys:String>
+    <sys:String x:Key="ClassList">科目表</sys:String>
 
 </ResourceDictionary>
