@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace KisManager.Interfaces
 {
-    interface ITextProvider
+    interface IResourceProvider
     {
         string GetText(string key);
+
+        object Resource(string key);
     }
 }

@@ -84,16 +84,24 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="AppBootstrapper.cs" />
-    <Compile Include="Common\HiddenIfNullConverter.cs" />
-    <Compile Include="Common\TextProvider.cs" />
-    <Compile Include="Controls\MouthPerformanceColum.cs" />
+    <Compile Include="Controls\DataGridMergeColumn.cs" />
+    <Compile Include="Controls\HiddenIfFalseConverter.cs" />
+    <Compile Include="Controls\HiddenIfNullConverter.cs" />
+    <Compile Include="Common\ResourceProvider.cs" />
+    <Compile Include="Controls\Exp.cs" />
     <Compile Include="Interfaces\ICreator.cs" />
+    <Compile Include="Interfaces\IDialogContent.cs" />
+    <Compile Include="Interfaces\IDialogProvider.cs" />
     <Compile Include="Interfaces\IHome.cs" />
     <Compile Include="Interfaces\ISettings.cs" />
     <Compile Include="Interfaces\IShell.cs" />
     <Compile Include="Interfaces\IModule.cs" />
-    <Compile Include="Interfaces\ITextProvider.cs" />
+    <Compile Include="Interfaces\IResourceProvider.cs" />
     <Compile Include="Model\AreaSalesPerformance.cs" />
+    <Compile Include="ShellView.xaml.cs">
+      <DependentUpon>ShellView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\DialogViewModel.cs" />
     <Compile Include="ViewModels\HomeViewModel.cs" />
     <Compile Include="ViewModels\SettingsViewModel.cs" />
     <Compile Include="ShellViewModel.cs" />
@@ -107,6 +115,9 @@
     <Compile Include="ViewModels\TabSalesPerformanceReportViewModel.cs" />
     <Compile Include="ViewModels\TabSetDepartmentViewModel.cs" />
     <Compile Include="ViewModels\TabSetEmploymentViewModel.cs" />
+    <Compile Include="Views\DialogView.xaml.cs">
+      <DependentUpon>DialogView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\HomeView.xaml.cs">
       <DependentUpon>HomeView.xaml</DependentUpon>
     </Compile>
@@ -145,6 +156,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ShellView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DialogView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -9,7 +9,7 @@ namespace KisManager.ViewModels
 {
     class TabPersonalSalesPerformanceViewModel : TabModulsBase
     {
-        public TabPersonalSalesPerformanceViewModel(ITextProvider text)
+        public TabPersonalSalesPerformanceViewModel(IResourceProvider text)
         {
             DisplayName = text.GetText("PersonalSalesPerformance");
         }

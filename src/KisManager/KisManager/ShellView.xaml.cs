@@ -1,4 +1,6 @@
-﻿using System;
+﻿using KisManager.Interfaces;
+using MahApps.Metro.Controls;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,21 +15,22 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace KisManager.Views
+namespace KisManager
 {
     /// <summary>
-    /// Interaction logic for TabAreaSalesPerformanceView.xaml
+    /// Interaction logic for ShellView.xaml
     /// </summary>
-    public partial class TabAreaSalesPerformanceView : UserControl
+    public partial class ShellView : MetroWindow, IDialogProvider
     {
-        public TabAreaSalesPerformanceView()
+        public ShellView()
         {
+            Tag = this;
             InitializeComponent();
         }
 
-        private void C1_Checked(object sender, RoutedEventArgs e)
+        public Task<object> ShowDialog(IDialogContent content)
         {
-            G.Items.Refresh();
+            return null;
         }
     }
 }

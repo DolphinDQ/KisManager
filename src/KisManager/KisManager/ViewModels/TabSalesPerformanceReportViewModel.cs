@@ -9,7 +9,7 @@ namespace KisManager.ViewModels
 {
     class TabSalesPerformanceReportViewModel : TabModulsBase
     {
-        public TabSalesPerformanceReportViewModel(ITextProvider text)
+        public TabSalesPerformanceReportViewModel(IResourceProvider text)
         {
             DisplayName = text.GetText("SalesPerformanceReport");
         }

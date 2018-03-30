@@ -9,9 +9,9 @@ namespace KisManager.ViewModels
 {
     class TabSetEmploymentViewModel : TabModulsBase
     {
-        public TabSetEmploymentViewModel(ITextProvider text)
+        public TabSetEmploymentViewModel(IResourceProvider res)
         {
-            DisplayName = text.GetText("SetEmployment");
+            DisplayName = res.GetText("SetEmployment");
         }
     }
 }

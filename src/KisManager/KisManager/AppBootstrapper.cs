@@ -22,7 +22,7 @@ namespace KisManager
             container.Instance<ICreator>(this);
             container.Singleton<IWindowManager, WindowManager>();
             container.Singleton<IEventAggregator, EventAggregator>();
-            container.Singleton<ITextProvider, TextProvider>();
+            container.Singleton<IResourceProvider, ResourceProvider>();
             container.PerRequest<IShell, ShellViewModel>();
             container.PerRequest<IHome, HomeViewModel>();
             container.PerRequest<ISettings, SettingsViewModel>();

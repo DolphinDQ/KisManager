@@ -16,18 +16,13 @@ using System.Windows.Shapes;
 namespace KisManager.Views
 {
     /// <summary>
-    /// Interaction logic for TabAreaSalesPerformanceView.xaml
+    /// Interaction logic for DialogView.xaml
     /// </summary>
-    public partial class TabAreaSalesPerformanceView : UserControl
+    public partial class DialogView : UserControl
     {
-        public TabAreaSalesPerformanceView()
+        public DialogView()
         {
             InitializeComponent();
-        }
-
-        private void C1_Checked(object sender, RoutedEventArgs e)
-        {
-            G.Items.Refresh();
         }
     }
 }

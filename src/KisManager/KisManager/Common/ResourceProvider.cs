@@ -9,11 +9,13 @@ using System.Windows.Controls;
 
 namespace KisManager.Common
 {
-    class TextProvider : FrameworkElement, ITextProvider
+    class ResourceProvider : FrameworkElement, IResourceProvider
     {
         public string GetText(string key)
         {
             return (string)FindResource(key);
         }
+
+        public object Resource(string key)=> FindResource(key);
     }
 }

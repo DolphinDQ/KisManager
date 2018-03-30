@@ -9,7 +9,7 @@ namespace KisManager.ViewModels
 {
     class TabSetDepartmentViewModel : TabModulsBase
     {
-        public TabSetDepartmentViewModel(ITextProvider text)
+        public TabSetDepartmentViewModel(IResourceProvider text)
         {
             DisplayName = text.GetText("SetDepartment");
         }

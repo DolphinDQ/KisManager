@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Controls;
 
-namespace KisManager.Controls
+namespace KisManager.Interfaces
 {
-    public class MouthPerformanceColum : DataGridTemplateColumn
+    public interface IDialogProvider
     {
+        Task<object> ShowDialog(IDialogContent content); 
     }
 }

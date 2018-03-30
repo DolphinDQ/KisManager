@@ -10,13 +10,13 @@ namespace KisManager.ViewModels
 {
     class TabAreaSalesPerformanceViewModel : TabModulsBase
     {
-        public TabAreaSalesPerformanceViewModel(ITextProvider text)
+        public TabAreaSalesPerformanceViewModel(IResourceProvider text)
         {
             DisplayName = text.GetText("AreaSalesPerformance");
-            Data.Add(new { AreaName = "区域1", D1 = 1111, D2 = 2222, D3 = 3333 });
-            Data.Add(new { AreaName = "区域1", D1 = 1111, D2 = 2222, D3 = 3333 });
-            Data.Add(new { AreaName = "区域1", D1 = 1111, D2 = 2222, D3 = 3333 });
-            Data.Add(new { AreaName = "区域1", D1 = 1111, D2 = 2222, D3 = 3333 });
+            Data.Add(new { AreaName = "区域1", D1 = 1111d, D2 = 2222, D3 = 3333 });
+            Data.Add(new { AreaName = "区域2", D1 = 1111d, D2 = 2222, D3 = 3333 });
+            Data.Add(new { AreaName = "区域3", D1 = 1111d, D2 = 2222, D3 = 3333 });
+            Data.Add(new { AreaName = "区域4", D1 = 1111d, D2 = 2222, D3 = 3333 });
         }
 
         public ObservableCollection<object> Data { get; set; } = new ObservableCollection<object>();
