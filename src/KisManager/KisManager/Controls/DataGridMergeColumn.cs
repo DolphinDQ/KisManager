@@ -56,6 +56,7 @@ namespace KisManager.Controls
                     Margin = new Thickness(0),
                     VerticalContentAlignment = VerticalAlignment.Center,
                     Height = 20,
+                    HorizontalContentAlignment= HorizontalAlignment.Right,
                     Visibility=Show
                 };
             }

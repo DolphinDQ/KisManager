@@ -42,14 +42,21 @@
             <Grid>
                 <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
                     <Label>筛选条件</Label>
-                    <ComboBox></ComboBox>
+                    <ComboBox SelectedIndex="0">
+                        <ComboBox.Items>
+                            <ComboBoxItem>2018</ComboBoxItem>
+                            <ComboBoxItem>2017</ComboBoxItem>
+                            <ComboBoxItem>2016</ComboBoxItem>
+                            <ComboBoxItem>2015</ComboBoxItem>
+                        </ComboBox.Items>
+                    </ComboBox>
                     <Button>查询</Button>
                     <Button>导出</Button>
                 </StackPanel>
                 <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
-                    <CheckBox Name="C1" IsChecked="False" Checked="C1_Checked" Unchecked="C1_Checked" >条件1</CheckBox>
-                    <CheckBox>条件2</CheckBox>
-                    <CheckBox>条件3</CheckBox>
+                    <CheckBox Name="C1" IsChecked="False" Checked="C1_Checked" Unchecked="C1_Checked" >计划业绩</CheckBox>
+                    <CheckBox>实际业绩</CheckBox>
+                    <CheckBox>差额</CheckBox>
                 </StackPanel>
             </Grid>
         </Border>
@@ -57,10 +64,16 @@
             <DataGrid Name="G" ItemsSource="{Binding Data}"
                 AutoGenerateColumns="False"
                 CanUserResizeRows="False">
-                <DataGrid.Resources>
-                </DataGrid.Resources>
                 <DataGrid.Columns>
-                    <DataGridHyperlinkColumn Width="100"  Header="{StaticResource AreaName}" Binding="{Binding AreaName}"></DataGridHyperlinkColumn>
+                    <DataGridTemplateColumn Width="100" Header="{StaticResource AreaName}" >
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Label HorizontalContentAlignment="Center">
+                                    <TextBlock TextDecorations="Underline"  Foreground="DodgerBlue" FontSize="18" Text="{Binding AreaName}"></TextBlock>
+                                </Label>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
                     <c:DataGridMergeColumn HeaderStyle="{StaticResource DataGridMergeColumnHeader}" ExHeader="{StaticResource YearSummary}">
                         <c:DataGridMergeColumn.Columns>
                             <c:DataGridMergeColumn Width="80" Header="{StaticResource ExpectPerformance}" Binding="{Binding D1}"></c:DataGridMergeColumn>
@@ -68,24 +81,99 @@
                         </c:DataGridMergeColumn.Columns>
                     </c:DataGridMergeColumn>
                     <!--12-->
-                    <c:DataGridMergeColumn HeaderStyle="{StaticResource DataGridMergeColumnHeader}" ExHeader="{StaticResource Mouth12}">
+                    <c:DataGridMergeColumn HeaderStyle="{StaticResource DataGridMergeColumnHeader}" ExHeader="{StaticResource Month12}">
                         <c:DataGridMergeColumn.Columns>
                             <c:DataGridMergeColumn Width="80" Header="{StaticResource ExpectPerformance}" Binding="{Binding D1}"></c:DataGridMergeColumn>
                             <c:DataGridMergeColumn Background="DodgerBlue" Width="80" Header="{StaticResource ActualPerformance}" Binding="{Binding D2}"></c:DataGridMergeColumn>
                             <c:DataGridMergeColumn Width="80" Header="{StaticResource DifferentOfPerformance}" Binding="{Binding D2}"></c:DataGridMergeColumn>
                         </c:DataGridMergeColumn.Columns>
                     </c:DataGridMergeColumn>
-                    <c:DataGridMergeColumn HeaderStyle="{StaticResource DataGridMergeColumnHeader}" ExHeader="{StaticResource Mouth11}">
+                    <c:DataGridMergeColumn HeaderStyle="{StaticResource DataGridMergeColumnHeader}" ExHeader="{StaticResource Month11}">
                         <c:DataGridMergeColumn.Columns>
                             <c:DataGridMergeColumn Width="80" Header="{StaticResource ExpectPerformance}" Binding="{Binding D1}"></c:DataGridMergeColumn>
                             <c:DataGridMergeColumn Background="DodgerBlue" Width="80" Header="{StaticResource ActualPerformance}" Binding="{Binding D2}"></c:DataGridMergeColumn>
                             <c:DataGridMergeColumn Width="80" Header="{StaticResource DifferentOfPerformance}" Binding="{Binding D2}"></c:DataGridMergeColumn>
                         </c:DataGridMergeColumn.Columns>
                     </c:DataGridMergeColumn>
-                    <c:DataGridMergeColumn HeaderStyle="{StaticResource DataGridMergeColumnHeader}" ExHeader="{StaticResource Mouth10}">
+                    <c:DataGridMergeColumn HeaderStyle="{StaticResource DataGridMergeColumnHeader}" ExHeader="{StaticResource Month10}">
                         <c:DataGridMergeColumn.Columns>
                             <c:DataGridMergeColumn Width="80" Header="{StaticResource ExpectPerformance}" Binding="{Binding D1}"></c:DataGridMergeColumn>
-                            <c:DataGridMergeColumn Background="Red" Width="80" Header="{StaticResource ActualPerformance}" Binding="{Binding D2}"></c:DataGridMergeColumn>
+                            <c:DataGridMergeColumn Background="DodgerBlue" Width="80" Header="{StaticResource ActualPerformance}" Binding="{Binding D2}"></c:DataGridMergeColumn>
+                            <c:DataGridMergeColumn Width="80" Header="{StaticResource DifferentOfPerformance}" Binding="{Binding D2}"></c:DataGridMergeColumn>
+                        </c:DataGridMergeColumn.Columns>
+                    </c:DataGridMergeColumn>
+
+                    <c:DataGridMergeColumn HeaderStyle="{StaticResource DataGridMergeColumnHeader}" ExHeader="{StaticResource Month9}">
+                        <c:DataGridMergeColumn.Columns>
+                            <c:DataGridMergeColumn Width="80" Header="{StaticResource ExpectPerformance}" Binding="{Binding D1}"></c:DataGridMergeColumn>
+                            <c:DataGridMergeColumn Background="DodgerBlue" Width="80" Header="{StaticResource ActualPerformance}" Binding="{Binding D2}"></c:DataGridMergeColumn>
+                            <c:DataGridMergeColumn Width="80" Header="{StaticResource DifferentOfPerformance}" Binding="{Binding D2}"></c:DataGridMergeColumn>
+                        </c:DataGridMergeColumn.Columns>
+                    </c:DataGridMergeColumn>
+
+                    <c:DataGridMergeColumn HeaderStyle="{StaticResource DataGridMergeColumnHeader}" ExHeader="{StaticResource Month8}">
+                        <c:DataGridMergeColumn.Columns>
+                            <c:DataGridMergeColumn Width="80" Header="{StaticResource ExpectPerformance}" Binding="{Binding D1}"></c:DataGridMergeColumn>
+                            <c:DataGridMergeColumn Background="DodgerBlue" Width="80" Header="{StaticResource ActualPerformance}" Binding="{Binding D2}"></c:DataGridMergeColumn>
+                            <c:DataGridMergeColumn Width="80" Header="{StaticResource DifferentOfPerformance}" Binding="{Binding D2}"></c:DataGridMergeColumn>
+                        </c:DataGridMergeColumn.Columns>
+                    </c:DataGridMergeColumn>
+
+                    <c:DataGridMergeColumn HeaderStyle="{StaticResource DataGridMergeColumnHeader}" ExHeader="{StaticResource Month7}">
+                        <c:DataGridMergeColumn.Columns>
+                            <c:DataGridMergeColumn Width="80" Header="{StaticResource ExpectPerformance}" Binding="{Binding D1}"></c:DataGridMergeColumn>
+                            <c:DataGridMergeColumn Background="DodgerBlue" Width="80" Header="{StaticResource ActualPerformance}" Binding="{Binding D2}"></c:DataGridMergeColumn>
+                            <c:DataGridMergeColumn Width="80" Header="{StaticResource DifferentOfPerformance}" Binding="{Binding D2}"></c:DataGridMergeColumn>
+                        </c:DataGridMergeColumn.Columns>
+                    </c:DataGridMergeColumn>
+
+                    <c:DataGridMergeColumn HeaderStyle="{StaticResource DataGridMergeColumnHeader}" ExHeader="{StaticResource Month6}">
+                        <c:DataGridMergeColumn.Columns>
+                            <c:DataGridMergeColumn Width="80" Header="{StaticResource ExpectPerformance}" Binding="{Binding D1}"></c:DataGridMergeColumn>
+                            <c:DataGridMergeColumn Background="DodgerBlue" Width="80" Header="{StaticResource ActualPerformance}" Binding="{Binding D2}"></c:DataGridMergeColumn>
+                            <c:DataGridMergeColumn Width="80" Header="{StaticResource DifferentOfPerformance}" Binding="{Binding D2}"></c:DataGridMergeColumn>
+                        </c:DataGridMergeColumn.Columns>
+                    </c:DataGridMergeColumn>
+
+
+                    <c:DataGridMergeColumn HeaderStyle="{StaticResource DataGridMergeColumnHeader}" ExHeader="{StaticResource Month5}">
+                        <c:DataGridMergeColumn.Columns>
+                            <c:DataGridMergeColumn Width="80" Header="{StaticResource ExpectPerformance}" Binding="{Binding D1}"></c:DataGridMergeColumn>
+                            <c:DataGridMergeColumn Background="DodgerBlue" Width="80" Header="{StaticResource ActualPerformance}" Binding="{Binding D2}"></c:DataGridMergeColumn>
+                            <c:DataGridMergeColumn Width="80" Header="{StaticResource DifferentOfPerformance}" Binding="{Binding D2}"></c:DataGridMergeColumn>
+                        </c:DataGridMergeColumn.Columns>
+                    </c:DataGridMergeColumn>
+
+
+                    <c:DataGridMergeColumn HeaderStyle="{StaticResource DataGridMergeColumnHeader}" ExHeader="{StaticResource Month4}">
+                        <c:DataGridMergeColumn.Columns>
+                            <c:DataGridMergeColumn Width="80" Header="{StaticResource ExpectPerformance}" Binding="{Binding D1}"></c:DataGridMergeColumn>
+                            <c:DataGridMergeColumn Background="DodgerBlue" Width="80" Header="{StaticResource ActualPerformance}" Binding="{Binding D2}"></c:DataGridMergeColumn>
+                            <c:DataGridMergeColumn Width="80" Header="{StaticResource DifferentOfPerformance}" Binding="{Binding D2}"></c:DataGridMergeColumn>
+                        </c:DataGridMergeColumn.Columns>
+                    </c:DataGridMergeColumn>
+
+
+                    <c:DataGridMergeColumn HeaderStyle="{StaticResource DataGridMergeColumnHeader}" ExHeader="{StaticResource Month3}">
+                        <c:DataGridMergeColumn.Columns>
+                            <c:DataGridMergeColumn Width="80" Header="{StaticResource ExpectPerformance}" Binding="{Binding D1}"></c:DataGridMergeColumn>
+                            <c:DataGridMergeColumn Background="DodgerBlue" Width="80" Header="{StaticResource ActualPerformance}" Binding="{Binding D2}"></c:DataGridMergeColumn>
+                            <c:DataGridMergeColumn Width="80" Header="{StaticResource DifferentOfPerformance}" Binding="{Binding D2}"></c:DataGridMergeColumn>
+                        </c:DataGridMergeColumn.Columns>
+                    </c:DataGridMergeColumn>
+
+                    <c:DataGridMergeColumn HeaderStyle="{StaticResource DataGridMergeColumnHeader}" ExHeader="{StaticResource Month2}">
+                        <c:DataGridMergeColumn.Columns>
+                            <c:DataGridMergeColumn Width="80" Header="{StaticResource ExpectPerformance}" Binding="{Binding D1}"></c:DataGridMergeColumn>
+                            <c:DataGridMergeColumn Background="DodgerBlue" Width="80" Header="{StaticResource ActualPerformance}" Binding="{Binding D2}"></c:DataGridMergeColumn>
+                            <c:DataGridMergeColumn Width="80" Header="{StaticResource DifferentOfPerformance}" Binding="{Binding D2}"></c:DataGridMergeColumn>
+                        </c:DataGridMergeColumn.Columns>
+                    </c:DataGridMergeColumn>
+
+                    <c:DataGridMergeColumn HeaderStyle="{StaticResource DataGridMergeColumnHeader}" ExHeader="{StaticResource Month1}">
+                        <c:DataGridMergeColumn.Columns>
+                            <c:DataGridMergeColumn Width="80" Header="{StaticResource ExpectPerformance}" Binding="{Binding D1}"></c:DataGridMergeColumn>
+                            <c:DataGridMergeColumn Background="DodgerBlue" Width="80" Header="{StaticResource ActualPerformance}" Binding="{Binding D2}"></c:DataGridMergeColumn>
                             <c:DataGridMergeColumn Width="80" Header="{StaticResource DifferentOfPerformance}" Binding="{Binding D2}"></c:DataGridMergeColumn>
                         </c:DataGridMergeColumn.Columns>
                     </c:DataGridMergeColumn>

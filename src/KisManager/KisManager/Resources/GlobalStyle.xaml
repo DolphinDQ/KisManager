@@ -29,7 +29,8 @@
                                             <ItemContainerTemplate>
                                                 <Border BorderBrush="DarkGray" Visibility="{Binding Show}" Padding="5" Margin="-3 -5 -5 -5" Background="{Binding Background}" Width="{Binding ActualWidth}" >
                                                     <Grid>
-                                                        <ContentControl VerticalAlignment="Center"  Content="{Binding Header}"></ContentControl>
+                                                        <Label VerticalAlignment="Center"  HorizontalContentAlignment="Center" Content="{Binding Header}">
+                                                        </Label>
                                                     </Grid>
                                                 </Border>
                                             </ItemContainerTemplate>

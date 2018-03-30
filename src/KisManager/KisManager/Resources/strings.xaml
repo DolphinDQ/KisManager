@@ -5,29 +5,30 @@
     <sys:String x:Key="AppName">销售业绩管理</sys:String>
     <sys:String x:Key="Home">首页</sys:String>
     <sys:String x:Key="Settings">设置</sys:String>
-    <sys:String x:Key="SetDepartment">设置部门</sys:String>
-    <sys:String x:Key="SetEmployment">设置职员</sys:String>
-    <sys:String x:Key="AreaSalesPerformance">区域销售业绩</sys:String>
-    <sys:String x:Key="PersonalSalesPerformance">个人销售业绩</sys:String>
+    <sys:String x:Key="SetDepartment">部门设置</sys:String>
+    <sys:String x:Key="SetEmployment">职员设置</sys:String>
+    <sys:String x:Key="AreaSalesPerformance">区域业绩</sys:String>
+    <sys:String x:Key="PersonalSalesPerformance">个人业绩</sys:String>
     <sys:String x:Key="SalesPerformanceReport">预算报表</sys:String>
     <sys:String x:Key="ClassList">科目表</sys:String>
     <sys:String x:Key="AreaName">区域名称</sys:String>
     <sys:String x:Key="YearSummary">年度统计</sys:String>
     <sys:String x:Key="ExpectPerformance">计划业绩</sys:String>
     <sys:String x:Key="ActualPerformance">实际业绩</sys:String>
-    <sys:String x:Key="DifferentOfPerformance">差值</sys:String>
-    <sys:String x:Key="Mouth1">一月份</sys:String>
-    <sys:String x:Key="Mouth2">二月份</sys:String>
-    <sys:String x:Key="Mouth3">三月份</sys:String>
-    <sys:String x:Key="Mouth4">四月份</sys:String>
-    <sys:String x:Key="Mouth5">五月份</sys:String>
-    <sys:String x:Key="Mouth6">六月份</sys:String>
-    <sys:String x:Key="Mouth7">七月份</sys:String>
-    <sys:String x:Key="Mouth8">八月份</sys:String>
-    <sys:String x:Key="Mouth9">九月份</sys:String>
-    <sys:String x:Key="Mouth10">十月份</sys:String>
-    <sys:String x:Key="Mouth11">十一月份</sys:String>
-    <sys:String x:Key="Mouth12">十二月份</sys:String>
-
+    <sys:String x:Key="DifferentOfPerformance">差额</sys:String>
+    <sys:String x:Key="Month1">一月</sys:String>
+    <sys:String x:Key="Month2">二月</sys:String>
+    <sys:String x:Key="Month3">三月</sys:String>
+    <sys:String x:Key="Month4">四月</sys:String>
+    <sys:String x:Key="Month5">五月</sys:String>
+    <sys:String x:Key="Month6">六月</sys:String>
+    <sys:String x:Key="Month7">七月</sys:String>
+    <sys:String x:Key="Month8">八月</sys:String>
+    <sys:String x:Key="Month9">九月</sys:String>
+    <sys:String x:Key="Month10">十月</sys:String>
+    <sys:String x:Key="Month11">十一月</sys:String>
+    <sys:String x:Key="Month12">十二月</sys:String>
+    <sys:String x:Key="UserName">用户名称</sys:String>
+    
 
 </ResourceDictionary>
