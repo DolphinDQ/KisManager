@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 
 namespace KisManager.Model
 {
-    /// <summary>
-    /// 区域销售业绩。
-    /// </summary>
-    public class AreaSalesPerformance
+    public class ModelBase
     {
-        public string AreaName { get; set; }
+        public DateTime Create { get; set; }
+
+        public DateTime Update { get; set; }
+
+        public int Id { get; set; }
 
     }
 }
