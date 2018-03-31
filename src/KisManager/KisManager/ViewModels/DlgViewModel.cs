@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Caliburn.Micro;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,9 @@ using System.Threading.Tasks;
 
 namespace KisManager.ViewModels
 {
-    class DialogViewModel
+    class DlgViewModel : Screen
     {
+
+        public IScreen Content { get; set; }
     }
 }

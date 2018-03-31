@@ -8,30 +8,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="800" d:DesignWidth="1024">
     <UserControl.Resources>
-        <Style x:Key="QueryPageTop" BasedOn="{StaticResource DefaultBorder}" TargetType="Border">
-            <Setter Property="Padding" Value="2"/>
-            <Style.Resources>
-                <Style TargetType="Label">
-                    <Setter Property="Margin" Value="3 0"/>
-                    <Setter Property="FontFamily" Value="微软雅黑"/>
-                </Style>
-                <Style TargetType="CheckBox" BasedOn="{StaticResource MetroCheckBox}">
-                    <Setter Property="FontFamily" Value="微软雅黑"/>
-                    <Setter Property="Margin" Value="3 0"/>
-                </Style>
-                <Style TargetType="ComboBox" BasedOn="{StaticResource MetroComboBox}">
-                    <Setter Property="FontFamily" Value="微软雅黑"/>
-                    <Setter Property="Margin" Value="3 0"/>
-                </Style>
-                <Style TargetType="Button" BasedOn="{StaticResource MetroButton}">
-                    <Setter Property="FontFamily" Value="微软雅黑"/>
-                    <Setter Property="Margin" Value="3 0"/>
-                    <Setter Property="MinWidth" Value="60"/>
-                </Style>
-            </Style.Resources>
-        </Style>
         <Style x:Key="QueryPageContent"  BasedOn="{StaticResource DefaultBorder}" TargetType="Border">
-
         </Style>
     </UserControl.Resources>
     <DockPanel >

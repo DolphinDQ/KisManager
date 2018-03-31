@@ -1,35 +1,28 @@
-﻿<UserControl x:Class="KisManager.Views.TabAreaSalesPerformanceView"
+﻿<UserControl x:Class="KisManager.Views.DlgAreaSalesPerformanceView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:KisManager.Views"
+             mc:Ignorable="d" 
              xmlns:cal="http://www.caliburnproject.org"
              xmlns:c="clr-namespace:KisManager.Controls"
-             xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
-             mc:Ignorable="d" 
-             d:DesignHeight="800" d:DesignWidth="1024">
+             d:DesignHeight="800" d:DesignWidth="1024"
+             xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls" >
     <UserControl.Resources>
         <Style x:Key="QueryPageContent"  BasedOn="{StaticResource DefaultBorder}" TargetType="Border"></Style>
     </UserControl.Resources>
-    <DockPanel >
+    <DockPanel>
         <Border Style="{StaticResource QueryPageTop}" DockPanel.Dock="Top">
             <Grid>
                 <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
-                    <Label >筛选条件</Label>
-                    <ComboBox SelectedIndex="0">
-                        <ComboBox.Items>
-                            <ComboBoxItem>2018</ComboBoxItem>
-                            <ComboBoxItem>2017</ComboBoxItem>
-                            <ComboBoxItem>2016</ComboBoxItem>
-                            <ComboBoxItem>2015</ComboBoxItem>
-                        </ComboBox.Items>
-                    </ComboBox>
-                    <Button Name="ShowAreaSalePerformance">查询</Button>
+                    <Button Name="Reload">刷新</Button>
+                    <Button Name="Edit">编辑</Button>
+                    <Button Name="Save">保存</Button>
                     <Button>导出</Button>
                 </StackPanel>
                 <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
-                    <CheckBox Name="C1" IsChecked="False">计划业绩</CheckBox>
+                    <CheckBox>计划业绩</CheckBox>
                     <CheckBox>实际业绩</CheckBox>
                     <CheckBox>差额</CheckBox>
                 </StackPanel>
@@ -38,7 +31,8 @@
         <Border Style="{DynamicResource QueryPageContent}">
             <DataGrid FrozenColumnCount="1" Name="G" ItemsSource="{Binding Data}"
                         AutoGenerateColumns="False"
-                        IsReadOnly="True"
+                        SelectedItem="{Binding CurrentData}"
+                        cal:Message.Attach="[Event MouseDoubleClick]=[Action Edit]"
                         EnableColumnVirtualization="True"
                         EnableRowVirtualization="True"
                         CanUserResizeRows="False">
@@ -46,7 +40,7 @@
                     <DataGridTemplateColumn  Width="100" Header="{StaticResource AreaName}" >
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Label HorizontalContentAlignment="Center" Cursor="Hand" cal:Message.Attach="[Event MouseDown]=[Action ShowAreaSalesPerformance($dataContext)]">
+                                <Label HorizontalContentAlignment="Center" Cursor="Hand">
                                     <TextBlock TextDecorations="Underline"  Foreground="DodgerBlue" FontSize="18" Text="{Binding Name}"></TextBlock>
                                 </Label>
                             </DataTemplate>

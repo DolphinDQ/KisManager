@@ -8,6 +8,6 @@ namespace KisManager.Interfaces
 {
     public interface IDialogProvider
     {
-        Task<object> ShowDialog(IDialogContent content); 
+        Task<object> ShowDialog(IDialogContent content);
     }
 }

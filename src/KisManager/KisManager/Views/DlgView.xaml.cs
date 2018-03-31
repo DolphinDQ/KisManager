@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MahApps.Metro.Controls;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,17 +11,16 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace KisManager.Views
 {
     /// <summary>
-    /// Interaction logic for DialogView.xaml
+    /// DlgView.xaml 的交互逻辑
     /// </summary>
-    public partial class DialogView : UserControl
+    public partial class DlgView : MetroWindow
     {
-        public DialogView()
+        public DlgView()
         {
             InitializeComponent();
         }

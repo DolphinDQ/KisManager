@@ -15,7 +15,6 @@ namespace KisManager.ViewModels
         public TabPersonalSalesPerformanceViewModel(IResourceProvider text)
         {
             DisplayName = text.GetText("PersonalSalesPerformance");
-
             Task.Factory.StartNew(() =>
             {
                 Create("张宏祥");
@@ -51,19 +50,17 @@ namespace KisManager.ViewModels
                 Create("苏永福");
                 Create("郭丕敬");
                 Create("蔡剑豪");
-
-                OnUIThread(() =>
+                foreach (var item in o)
                 {
-                    foreach (var item in o)
+                    OnUIThread(() =>
                     {
                         Data.Add(item);
-                    }
-                    o.Clear();
-                });
+                    });
+                }
+                o.Clear();
             });
-
-
         }
+    
         public void Create(string name)
         {
             var d1 = Math.Round(r.NextDouble() * 3000, 2);

@@ -1,0 +1,131 @@
+﻿<UserControl x:Class="KisManager.Views.DlgSalesPerformanceEditView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:KisManager.Views"
+             mc:Ignorable="d" 
+             xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls">
+    <StackPanel>
+        <StackPanel.Resources>
+            <Style TargetType="Border" BasedOn="{StaticResource DefaultBorder}">
+                <Setter Property="Padding" Value="5"/>
+                <Style.Resources>
+                    <Style TargetType="Label" BasedOn="{StaticResource MetroLabel}">
+                        <Setter Property="FontSize" Value="15"/>
+                        <Setter Property="Width" Value="60"/>
+                        <Setter Property="HorizontalContentAlignment" Value="Right"/>
+                    </Style>
+                    <Style TargetType="Controls:NumericUpDown">
+                        <Setter Property="Width" Value="120"/>
+                        <Setter Property="Margin" Value="5 2"/>
+                    </Style>
+                </Style.Resources>
+            </Style>
+            <Style x:Key="TopBorder" TargetType="Border" BasedOn="{StaticResource DefaultBorder}">
+                <Setter Property="Padding" Value="60 1 1 1"/>
+                <Style.Resources>
+                    <Style TargetType="Label" BasedOn="{StaticResource MetroLabel}">
+                        <Setter Property="FontSize" Value="18"/>
+                        <Setter Property="FontWeight" Value="Bold"/>
+                        <Setter Property="Width" Value="120"/>
+                        <Setter Property="Margin" Value="5 2"/>
+                        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                    </Style>
+                </Style.Resources>
+            </Style>
+        </StackPanel.Resources>
+        <Label HorizontalContentAlignment="Center">
+            <StackPanel Orientation="Horizontal" >
+                <TextBlock VerticalAlignment="Bottom" FontSize="25" Text="{Binding Data.Name, StringFormat='{}{0}-'}"/>
+                <TextBlock VerticalAlignment="Bottom" FontSize="18" Text="{StaticResource SalesPerformance}"></TextBlock>
+            </StackPanel>
+        </Label>
+        <Border Style="{StaticResource TopBorder}">
+            <StackPanel Orientation="Horizontal">
+                <Label Content="{StaticResource ExpectPerformance}"></Label>
+                <Label Content="{StaticResource ActualPerformance}"></Label>
+                <Label Content="{StaticResource DifferentOfPerformance}"></Label>
+            </StackPanel>
+        </Border>
+        <Border>
+            <StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="{StaticResource Month1}" />
+                    <Controls:NumericUpDown></Controls:NumericUpDown>
+                    <Controls:NumericUpDown></Controls:NumericUpDown>
+                    <Controls:NumericUpDown IsEnabled="False"></Controls:NumericUpDown>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="{StaticResource Month2}" />
+                    <Controls:NumericUpDown></Controls:NumericUpDown>
+                    <Controls:NumericUpDown></Controls:NumericUpDown>
+                    <Controls:NumericUpDown IsEnabled="False"></Controls:NumericUpDown>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="{StaticResource Month3}" />
+                    <Controls:NumericUpDown></Controls:NumericUpDown>
+                    <Controls:NumericUpDown></Controls:NumericUpDown>
+                    <Controls:NumericUpDown IsEnabled="False"></Controls:NumericUpDown>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="{StaticResource Month4}" />
+                    <Controls:NumericUpDown></Controls:NumericUpDown>
+                    <Controls:NumericUpDown></Controls:NumericUpDown>
+                    <Controls:NumericUpDown IsEnabled="False"></Controls:NumericUpDown>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="{StaticResource Month5}" />
+                    <Controls:NumericUpDown></Controls:NumericUpDown>
+                    <Controls:NumericUpDown></Controls:NumericUpDown>
+                    <Controls:NumericUpDown IsEnabled="False"></Controls:NumericUpDown>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="{StaticResource Month6}" />
+                    <Controls:NumericUpDown></Controls:NumericUpDown>
+                    <Controls:NumericUpDown></Controls:NumericUpDown>
+                    <Controls:NumericUpDown IsEnabled="False"></Controls:NumericUpDown>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="{StaticResource Month7}" />
+                    <Controls:NumericUpDown></Controls:NumericUpDown>
+                    <Controls:NumericUpDown></Controls:NumericUpDown>
+                    <Controls:NumericUpDown IsEnabled="False"></Controls:NumericUpDown>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="{StaticResource Month8}" />
+                    <Controls:NumericUpDown></Controls:NumericUpDown>
+                    <Controls:NumericUpDown></Controls:NumericUpDown>
+                    <Controls:NumericUpDown IsEnabled="False"></Controls:NumericUpDown>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="{StaticResource Month9}" />
+                    <Controls:NumericUpDown></Controls:NumericUpDown>
+                    <Controls:NumericUpDown></Controls:NumericUpDown>
+                    <Controls:NumericUpDown IsEnabled="False"></Controls:NumericUpDown>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="{StaticResource Month10}" />
+                    <Controls:NumericUpDown></Controls:NumericUpDown>
+                    <Controls:NumericUpDown></Controls:NumericUpDown>
+                    <Controls:NumericUpDown IsEnabled="False"></Controls:NumericUpDown>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="{StaticResource Month11}" />
+                    <Controls:NumericUpDown></Controls:NumericUpDown>
+                    <Controls:NumericUpDown></Controls:NumericUpDown>
+                    <Controls:NumericUpDown IsEnabled="False"></Controls:NumericUpDown>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="{StaticResource Month12}" />
+                    <Controls:NumericUpDown></Controls:NumericUpDown>
+                    <Controls:NumericUpDown></Controls:NumericUpDown>
+                    <Controls:NumericUpDown IsEnabled="False"></Controls:NumericUpDown>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+        <StackPanel Margin="10" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Width="150" Height="40" FontSize="20">确定</Button>
+        </StackPanel>
+    </StackPanel>
+</UserControl>

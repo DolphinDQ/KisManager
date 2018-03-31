@@ -15,17 +15,12 @@ namespace KisManager.Controls
     {
         public DataGridMergeColumn()
         {
-            IsReadOnly = true;
             CanUserReorder = false;
             CanUserResize = false;
-            //Columns.CollectionChanged += Columns_CollectionChanged;
+            IsReadOnly = true;
         }
 
-        //private void Columns_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
-        //{
-        //    LoadHeader();
-        //}
-
+    
         protected override FrameworkElement GenerateElement(DataGridCell cell, object dataItem)
         {
             var ui = base.GenerateElement(cell, dataItem); ;
@@ -55,9 +50,9 @@ namespace KisManager.Controls
                     Padding = new Thickness(0),
                     Margin = new Thickness(0),
                     VerticalContentAlignment = VerticalAlignment.Center,
-                    Height = 20,
-                    HorizontalContentAlignment= HorizontalAlignment.Right,
-                    Visibility=Show
+                    Height = 28,
+                    HorizontalContentAlignment = HorizontalAlignment.Right,
+                    Visibility = Show,
                 };
             }
             return ui;
@@ -90,7 +85,6 @@ namespace KisManager.Controls
         // Using a DependencyProperty as the backing store for Background.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty BackgroundProperty =
             DependencyProperty.Register("Background", typeof(Brush), typeof(DataGridMergeColumn), new PropertyMetadata(Brushes.Transparent));
-
 
         public Visibility Show
         {

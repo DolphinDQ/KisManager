@@ -9,11 +9,32 @@
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="CornerRadius" Value="3"/>
     </Style>
-
+    <Style x:Key="QueryPageTop" BasedOn="{StaticResource DefaultBorder}" TargetType="Border">
+        <Setter Property="Padding" Value="2"/>
+        <Style.Resources>
+            <Style TargetType="Label">
+                <Setter Property="Margin" Value="3 0"/>
+                <Setter Property="FontFamily" Value="微软雅黑"/>
+            </Style>
+            <Style TargetType="CheckBox" BasedOn="{StaticResource MetroCheckBox}">
+                <Setter Property="FontFamily" Value="微软雅黑"/>
+                <Setter Property="Margin" Value="3 0"/>
+            </Style>
+            <Style TargetType="ComboBox" BasedOn="{StaticResource MetroComboBox}">
+                <Setter Property="FontFamily" Value="微软雅黑"/>
+                <Setter Property="Margin" Value="3 0"/>
+            </Style>
+            <Style TargetType="Button" BasedOn="{StaticResource MetroButton}">
+                <Setter Property="FontFamily" Value="微软雅黑"/>
+                <Setter Property="Margin" Value="3 0"/>
+                <Setter Property="MinWidth" Value="60"/>
+            </Style>
+        </Style.Resources>
+    </Style>
     <Style x:Key="DataGridMergeColumnHeader" BasedOn="{StaticResource MetroDataGridColumnHeader}" TargetType="DataGridColumnHeader">
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate >
+                <ControlTemplate TargetType="DataGridColumnHeader">
                     <ContentControl>
                         <StackPanel>
                             <Label BorderBrush="DarkGray" BorderThickness="1"  HorizontalContentAlignment="Center" Content="{Binding ExHeader}"></Label>
@@ -28,10 +49,7 @@
                                         <ListView.ItemTemplate>
                                             <ItemContainerTemplate>
                                                 <Border BorderBrush="DarkGray" Visibility="{Binding Show}" Padding="5" Margin="-3 -5 -5 -5" Background="{Binding Background}" Width="{Binding ActualWidth}" >
-                                                    <Grid>
-                                                        <Label VerticalAlignment="Center"  HorizontalContentAlignment="Center" Content="{Binding Header}">
-                                                        </Label>
-                                                    </Grid>
+                                                    <Label VerticalAlignment="Center"  HorizontalContentAlignment="Center" Content="{Binding Header}"></Label>
                                                 </Border>
                                             </ItemContainerTemplate>
                                         </ListView.ItemTemplate>

@@ -1,4 +1,5 @@
-﻿using KisManager.Interfaces;
+﻿using Caliburn.Micro;
+using KisManager.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -12,8 +13,13 @@ namespace KisManager.ViewModels
     {
         Random r = new Random();
         List<object> o = new List<object>();
-        public TabAreaSalesPerformanceViewModel(IResourceProvider text)
+        private ICreator m_creator;
+        private IWindowManager m_window;
+
+        public TabAreaSalesPerformanceViewModel(IResourceProvider text, IWindowManager window, ICreator creator)
         {
+            m_creator = creator;
+            m_window = window;
             DisplayName = text.GetText("AreaSalesPerformance");
             Task.Factory.StartNew(() =>
             {
@@ -49,11 +55,16 @@ namespace KisManager.ViewModels
         {
             var d1 = Math.Round(r.NextDouble() * 3000, 2);
             var d2 = Math.Round(r.NextDouble() * 5000, 2);
-            o.Add(new { AreaName = name, D1 = d1, D2 = d2, D3 = Math.Round(d2 - d1, 2) });
+            o.Add(new { Name = name, D1 = d1, D2 = d2, D3 = Math.Round(d2 - d1, 2) });
         }
 
         public ObservableCollection<object> Data { get; set; } = new ObservableCollection<object>();
 
+        public void ShowAreaSalesPerformance(dynamic obj)
+        {
+            var dlg = m_creator.CreateDialog<DlgAreaSalesPerformanceViewModel>(o => o.Root = obj);
+            m_window.ShowDialog(dlg);
+        }
 
     }
 }

@@ -29,6 +29,8 @@
     <sys:String x:Key="Month11">十一月</sys:String>
     <sys:String x:Key="Month12">十二月</sys:String>
     <sys:String x:Key="UserName">用户名称</sys:String>
+    <sys:String x:Key="SalesPerformance">销售业绩</sys:String>
+    <sys:String x:Key="EditSalesPerformance">销售业绩设置</sys:String>
     
 
 </ResourceDictionary>

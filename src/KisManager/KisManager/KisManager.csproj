@@ -89,6 +89,7 @@
     <Compile Include="Controls\HiddenIfNullConverter.cs" />
     <Compile Include="Common\ResourceProvider.cs" />
     <Compile Include="Controls\Exp.cs" />
+    <Compile Include="Common\GlobalExtensions.cs" />
     <Compile Include="Interfaces\ICreator.cs" />
     <Compile Include="Interfaces\IDialogContent.cs" />
     <Compile Include="Interfaces\IDialogProvider.cs" />
@@ -98,10 +99,9 @@
     <Compile Include="Interfaces\IModule.cs" />
     <Compile Include="Interfaces\IResourceProvider.cs" />
     <Compile Include="Model\AreaSalesPerformance.cs" />
-    <Compile Include="ShellView.xaml.cs">
-      <DependentUpon>ShellView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="ViewModels\DialogViewModel.cs" />
+    <Compile Include="ViewModels\DlgAreaSalesPerformanceViewModel.cs" />
+    <Compile Include="ViewModels\DlgSalesPerformanceEditViewModel.cs" />
+    <Compile Include="ViewModels\DlgViewModel.cs" />
     <Compile Include="ViewModels\HomeViewModel.cs" />
     <Compile Include="ViewModels\SettingsViewModel.cs" />
     <Compile Include="ShellViewModel.cs" />
@@ -115,8 +115,14 @@
     <Compile Include="ViewModels\TabSalesPerformanceReportViewModel.cs" />
     <Compile Include="ViewModels\TabSetDepartmentViewModel.cs" />
     <Compile Include="ViewModels\TabSetEmploymentViewModel.cs" />
-    <Compile Include="Views\DialogView.xaml.cs">
-      <DependentUpon>DialogView.xaml</DependentUpon>
+    <Compile Include="Views\DlgAreaSalesPerformanceView.xaml.cs">
+      <DependentUpon>DlgAreaSalesPerformanceView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DlgSalesPerformanceEditView.xaml.cs">
+      <DependentUpon>DlgSalesPerformanceEditView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DlgView.xaml.cs">
+      <DependentUpon>DlgView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\HomeView.xaml.cs">
       <DependentUpon>HomeView.xaml</DependentUpon>
@@ -159,7 +165,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\DialogView.xaml">
+    <Page Include="Views\DlgAreaSalesPerformanceView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DlgSalesPerformanceEditView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DlgView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
