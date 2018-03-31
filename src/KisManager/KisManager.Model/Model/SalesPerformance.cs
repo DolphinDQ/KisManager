@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace KisManager.Model
+﻿namespace KisManager.Model
 {
     /// <summary>
     /// 区域销售业绩。
