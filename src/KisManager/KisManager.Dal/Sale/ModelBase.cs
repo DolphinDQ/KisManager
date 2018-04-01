@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace KisManager.Model
+namespace KisManager.Sale
 {
     public class ModelBase
     {

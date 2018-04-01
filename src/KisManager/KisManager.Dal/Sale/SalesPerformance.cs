@@ -1,4 +1,4 @@
-﻿namespace KisManager.Model
+﻿namespace KisManager.Sale
 {
     /// <summary>
     /// 区域销售业绩。
