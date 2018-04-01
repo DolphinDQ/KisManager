@@ -20,5 +20,8 @@ namespace KisManager
             dlg.Content = content;
             return dlg;
         }
+
+        public static string Get(this IConfigProvider config, string key) => config.Get<string>(key);
+
     }
 }

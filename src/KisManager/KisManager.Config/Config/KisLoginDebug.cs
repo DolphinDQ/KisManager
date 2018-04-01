@@ -5,7 +5,7 @@ using System.Text;
 
 namespace KisManager.Config
 {
-    class KisLoginDebug : IKisLogin
+    public class KisLoginDebug : IKisLogin
     {
         /*
 IsDemo=>True
