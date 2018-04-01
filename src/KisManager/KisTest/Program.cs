@@ -1,4 +1,6 @@
-﻿using System;
+﻿using KisManager.Config;
+using System;
+using System.Linq.Expressions;
 namespace KisTest
 {
     class Program
@@ -6,20 +8,34 @@ namespace KisTest
 
         static void Main(string[] args)
         {
-            var type = Type.GetTypeFromProgID("K3Login.ClsLogin");
-            Console.WriteLine("type = " + type);
-            object a = Activator.CreateInstance(type);
-            Console.WriteLine("a = " + a);
+            PrintKisInfo();
+            Console.Read();
+        }
+
+        static void PrintKisInfo()
+        {
+            var login = new KisClsLogin();
             try
             {
-                var b = type.InvokeMember("[DispID=1610809350]", System.Reflection.BindingFlags.InvokeMethod, null, a, null);
-                Console.WriteLine(b);
+                if (login.CheckLogin())
+                {
+                    Write(() => login.IsDemo);
+                    Write(() => login.IsIndustry);
+                    Write(() => login.PropsString);
+                    Write(() => login.ServerMgr);
+                    Write(() => login.UserName);
+                    Write(() => login.AcctName);
+                }
             }
             catch (Exception e)
             {
-                Console.WriteLine("err:"+e);
+                Console.WriteLine(e.Message);
             }
-            Console.Read();
+        }
+
+        static void Write<T>(Expression<Func<T>> exp)
+        {
+            Console.WriteLine("{0}=>{1}", ((MemberExpression)exp.Body).Member.Name, exp.Compile()());
         }
     }
 }

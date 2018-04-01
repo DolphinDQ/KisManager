@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KisManager.Model", "KisMana
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KisTest", "KisTest\KisTest.csproj", "{4BF36111-98F6-4ACC-A9DD-7833E0B287B9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KisManager.Config", "KisManager.Config\KisManager.Config.csproj", "{F75E9563-4B43-4BBC-B539-5D8B9725A891}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,6 +57,18 @@ Global
 		{4BF36111-98F6-4ACC-A9DD-7833E0B287B9}.Release|x64.Build.0 = Release|Any CPU
 		{4BF36111-98F6-4ACC-A9DD-7833E0B287B9}.Release|x86.ActiveCfg = Release|Any CPU
 		{4BF36111-98F6-4ACC-A9DD-7833E0B287B9}.Release|x86.Build.0 = Release|Any CPU
+		{F75E9563-4B43-4BBC-B539-5D8B9725A891}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F75E9563-4B43-4BBC-B539-5D8B9725A891}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F75E9563-4B43-4BBC-B539-5D8B9725A891}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{F75E9563-4B43-4BBC-B539-5D8B9725A891}.Debug|x64.Build.0 = Debug|Any CPU
+		{F75E9563-4B43-4BBC-B539-5D8B9725A891}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{F75E9563-4B43-4BBC-B539-5D8B9725A891}.Debug|x86.Build.0 = Debug|Any CPU
+		{F75E9563-4B43-4BBC-B539-5D8B9725A891}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F75E9563-4B43-4BBC-B539-5D8B9725A891}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F75E9563-4B43-4BBC-B539-5D8B9725A891}.Release|x64.ActiveCfg = Release|Any CPU
+		{F75E9563-4B43-4BBC-B539-5D8B9725A891}.Release|x64.Build.0 = Release|Any CPU
+		{F75E9563-4B43-4BBC-B539-5D8B9725A891}.Release|x86.ActiveCfg = Release|Any CPU
+		{F75E9563-4B43-4BBC-B539-5D8B9725A891}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
