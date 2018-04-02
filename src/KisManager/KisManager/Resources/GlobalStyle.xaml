@@ -35,31 +35,52 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="DataGridColumnHeader">
-                    <ContentControl>
-                        <StackPanel>
-                            <Label BorderBrush="DarkGray" BorderThickness="1"  HorizontalContentAlignment="Center" Content="{Binding ExHeader}"></Label>
-                            <Border Style="{x:Null}" BorderBrush="DarkGray" BorderThickness="1 1 1 3" Margin="0"  >
-                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                                    <ListView Padding="0"  SelectedItem="{x:Null}" IsHitTestVisible="False" BorderThickness="0"  ItemsSource="{Binding Columns}" SelectedIndex="-1" Background="Transparent">
-                                        <ListView.ItemsPanel>
-                                            <ItemsPanelTemplate>
-                                                <StackPanel Orientation="Horizontal"></StackPanel>
-                                            </ItemsPanelTemplate>
-                                        </ListView.ItemsPanel>
-                                        <ListView.ItemTemplate>
-                                            <ItemContainerTemplate>
-                                                <Border BorderBrush="DarkGray" Visibility="{Binding Show}" Padding="5" Margin="-3 -5 -5 -5" Background="{Binding Background}" Width="{Binding ActualWidth}" >
-                                                    <Label VerticalAlignment="Center"  HorizontalContentAlignment="Center" Content="{Binding Header}"></Label>
-                                                </Border>
-                                            </ItemContainerTemplate>
-                                        </ListView.ItemTemplate>
-                                    </ListView>
-                                </StackPanel>
-                            </Border>
-                        </StackPanel>
-                    </ContentControl>
+                    <StackPanel>
+                        <Label BorderBrush="DarkGray" BorderThickness="1"  HorizontalContentAlignment="Center" Content="{Binding ExHeader}"></Label>
+                        <Border Style="{x:Null}" BorderBrush="DarkGray" BorderThickness="1 1 1 3" Margin="0"  >
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                <ListView Padding="0"  SelectedItem="{x:Null}" IsHitTestVisible="False" BorderThickness="0"  ItemsSource="{Binding Columns}" SelectedIndex="-1" Background="Transparent">
+                                    <ListView.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <StackPanel Orientation="Horizontal"></StackPanel>
+                                        </ItemsPanelTemplate>
+                                    </ListView.ItemsPanel>
+                                    <ListView.ItemTemplate>
+                                        <ItemContainerTemplate>
+                                            <ItemContainerTemplate.Triggers>
+                                                <DataTrigger></DataTrigger>
+                                            </ItemContainerTemplate.Triggers>
+                                            <Border BorderBrush="DarkGray" Visibility="{Binding Visibility}" Padding="5" Margin="-5" Background="{Binding Background}" Width="{Binding ActualWidth}" >
+                                                <Label VerticalAlignment="Center"  HorizontalContentAlignment="Center" Content="{Binding Header}"></Label>
+                                            </Border>
+                                        </ItemContainerTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
+                            </StackPanel>
+                        </Border>
+                    </StackPanel>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
     </Style>
+    <!--<Style x:Key="DataGridMergeCell"  TargetType="DataGridCell" BasedOn="{StaticResource MetroDataGridCell}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="DataGridCell">
+                    <Border Background="Red" Child="{TemplateBinding Content}"></Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>-->
+    <!--<Style x:Key="DataGridMergeCell" TargetType="ContentControl">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ContentControl">
+                    <Border>
+                        <ContentControl Content="{TemplateBinding Content}"></ContentControl>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>-->
 </ResourceDictionary>

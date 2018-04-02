@@ -100,7 +100,6 @@
     <Compile Include="Controls\HiddenIfFalseConverter.cs" />
     <Compile Include="Controls\HiddenIfNullConverter.cs" />
     <Compile Include="Common\ResourceProvider.cs" />
-    <Compile Include="Controls\Exp.cs" />
     <Compile Include="Common\GlobalExtensions.cs" />
     <Compile Include="Interfaces\ICreator.cs" />
     <Compile Include="Interfaces\IDialogContent.cs" />
@@ -111,7 +110,8 @@
     <Compile Include="Interfaces\IShell.cs" />
     <Compile Include="Interfaces\IModule.cs" />
     <Compile Include="Interfaces\IResourceProvider.cs" />
-    <Compile Include="ViewModels\DlgAreaSalesPerformanceViewModel.cs" />
+    <Compile Include="Model\SalesPerformanceItem.cs" />
+    <Compile Include="ViewModels\DlgSalesPerformanceForCustomerViewModel.cs" />
     <Compile Include="ViewModels\DlgSalesPerformanceEditViewModel.cs" />
     <Compile Include="ViewModels\DlgViewModel.cs" />
     <Compile Include="ViewModels\HomeViewModel.cs" />
@@ -127,8 +127,8 @@
     <Compile Include="ViewModels\TabSalesPerformanceReportViewModel.cs" />
     <Compile Include="ViewModels\TabSetDepartmentViewModel.cs" />
     <Compile Include="ViewModels\TabSetEmploymentViewModel.cs" />
-    <Compile Include="Views\DlgAreaSalesPerformanceView.xaml.cs">
-      <DependentUpon>DlgAreaSalesPerformanceView.xaml</DependentUpon>
+    <Compile Include="Views\DlgSalesPerformanceForCustomerView.xaml.cs">
+      <DependentUpon>DlgSalesPerformanceForCustomerView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\DlgSalesPerformanceEditView.xaml.cs">
       <DependentUpon>DlgSalesPerformanceEditView.xaml</DependentUpon>
@@ -177,7 +177,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\DlgAreaSalesPerformanceView.xaml">
+    <Page Include="Views\DlgSalesPerformanceForCustomerView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -260,9 +260,7 @@
   <ItemGroup>
     <Resource Include="laucher.ico" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Model\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\KisManager.Config\KisManager.Config.csproj">
       <Project>{f75e9563-4b43-4bbc-b539-5d8b9725a891}</Project>

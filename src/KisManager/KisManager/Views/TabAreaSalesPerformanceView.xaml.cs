@@ -27,7 +27,23 @@ namespace KisManager.Views
 
         private void C1_Checked(object sender, RoutedEventArgs e)
         {
-            G.Items.Refresh();
+            try
+            {
+                //var col = G.Columns;
+                //foreach (var item in col)
+                //{
+                //    item.Width = new DataGridLength(1.0, DataGridLengthUnitType.SizeToHeader);
+                //}
+                //var i = G.ItemsSource;
+                //G.ItemsSource = null;
+                //G.ItemsSource = i;
+                G.Items.Refresh();
+            }
+            catch (Exception)
+            {
+
+            }
+
         }
     }
 }

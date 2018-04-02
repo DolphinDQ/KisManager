@@ -35,7 +35,7 @@ namespace KisManager
             container.PerRequest<IHome, HomeViewModel>();
             container.PerRequest<ISettings, SettingsViewModel>();
             container.PerRequest<DlgViewModel>();
-            container.PerRequest<DlgAreaSalesPerformanceViewModel>();
+            container.PerRequest<DlgSalesPerformanceForCustomerViewModel>();
             container.PerRequest<DlgSalesPerformanceEditViewModel>();
             container.PerRequest<IModule, TabAreaSalesPerformanceViewModel>(nameof(TabAreaSalesPerformanceViewModel));
             container.PerRequest<IModule, TabPersonalSalesPerformanceViewModel>(nameof(TabPersonalSalesPerformanceViewModel));

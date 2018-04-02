@@ -52,75 +52,75 @@
             <StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <Label Content="{StaticResource Month1}" />
-                    <Controls:NumericUpDown></Controls:NumericUpDown>
-                    <Controls:NumericUpDown></Controls:NumericUpDown>
-                    <Controls:NumericUpDown IsEnabled="False"></Controls:NumericUpDown>
+                    <Controls:NumericUpDown Value="{Binding Data.M1Except}"/>
+                    <Controls:NumericUpDown Value="{Binding Data.M1Actual}"/>
+                    <Controls:NumericUpDown Value="{Binding Data.M1Different}" IsEnabled="False"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <Label Content="{StaticResource Month2}" />
-                    <Controls:NumericUpDown></Controls:NumericUpDown>
-                    <Controls:NumericUpDown></Controls:NumericUpDown>
-                    <Controls:NumericUpDown IsEnabled="False"></Controls:NumericUpDown>
+                    <Controls:NumericUpDown Value="{Binding Data.M2Except}"/>
+                    <Controls:NumericUpDown Value="{Binding Data.M2Actual}"/>
+                    <Controls:NumericUpDown Value="{Binding Data.M2Different}" IsEnabled="False"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <Label Content="{StaticResource Month3}" />
-                    <Controls:NumericUpDown></Controls:NumericUpDown>
-                    <Controls:NumericUpDown></Controls:NumericUpDown>
-                    <Controls:NumericUpDown IsEnabled="False"></Controls:NumericUpDown>
+                    <Controls:NumericUpDown Value="{Binding Data.M3Except}"/>
+                    <Controls:NumericUpDown Value="{Binding Data.M3Actual}"/>
+                    <Controls:NumericUpDown Value="{Binding Data.M3Different}" IsEnabled="False"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <Label Content="{StaticResource Month4}" />
-                    <Controls:NumericUpDown></Controls:NumericUpDown>
-                    <Controls:NumericUpDown></Controls:NumericUpDown>
-                    <Controls:NumericUpDown IsEnabled="False"></Controls:NumericUpDown>
+                    <Controls:NumericUpDown Value="{Binding Data.M4Except}"/>
+                    <Controls:NumericUpDown Value="{Binding Data.M4Actual}"/>
+                    <Controls:NumericUpDown Value="{Binding Data.M4Different}" IsEnabled="False"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <Label Content="{StaticResource Month5}" />
-                    <Controls:NumericUpDown></Controls:NumericUpDown>
-                    <Controls:NumericUpDown></Controls:NumericUpDown>
-                    <Controls:NumericUpDown IsEnabled="False"></Controls:NumericUpDown>
+                    <Controls:NumericUpDown Value="{Binding Data.M5Except}"/>
+                    <Controls:NumericUpDown Value="{Binding Data.M5Actual}"/>
+                    <Controls:NumericUpDown Value="{Binding Data.M5Different}" IsEnabled="False"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <Label Content="{StaticResource Month6}" />
-                    <Controls:NumericUpDown></Controls:NumericUpDown>
-                    <Controls:NumericUpDown></Controls:NumericUpDown>
-                    <Controls:NumericUpDown IsEnabled="False"></Controls:NumericUpDown>
+                    <Controls:NumericUpDown Value="{Binding Data.M6Except}"/>
+                    <Controls:NumericUpDown Value="{Binding Data.M6Actual}"/>
+                    <Controls:NumericUpDown Value="{Binding Data.M6Different}" IsEnabled="False"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <Label Content="{StaticResource Month7}" />
-                    <Controls:NumericUpDown></Controls:NumericUpDown>
-                    <Controls:NumericUpDown></Controls:NumericUpDown>
-                    <Controls:NumericUpDown IsEnabled="False"></Controls:NumericUpDown>
+                    <Controls:NumericUpDown Value="{Binding Data.M7Except}"/>
+                    <Controls:NumericUpDown Value="{Binding Data.M7Actual}"/>
+                    <Controls:NumericUpDown Value="{Binding Data.M7Different}" IsEnabled="False"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <Label Content="{StaticResource Month8}" />
-                    <Controls:NumericUpDown></Controls:NumericUpDown>
-                    <Controls:NumericUpDown></Controls:NumericUpDown>
-                    <Controls:NumericUpDown IsEnabled="False"></Controls:NumericUpDown>
+                    <Controls:NumericUpDown Value="{Binding Data.M8Except}"/>
+                    <Controls:NumericUpDown Value="{Binding Data.M8Actual}"/>
+                    <Controls:NumericUpDown Value="{Binding Data.M8Different}" IsEnabled="False"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <Label Content="{StaticResource Month9}" />
-                    <Controls:NumericUpDown></Controls:NumericUpDown>
-                    <Controls:NumericUpDown></Controls:NumericUpDown>
-                    <Controls:NumericUpDown IsEnabled="False"></Controls:NumericUpDown>
+                    <Controls:NumericUpDown Value="{Binding Data.M9Except}"/>
+                    <Controls:NumericUpDown Value="{Binding Data.M9Actual}"/>
+                    <Controls:NumericUpDown Value="{Binding Data.M9Different}" IsEnabled="False"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <Label Content="{StaticResource Month10}" />
-                    <Controls:NumericUpDown></Controls:NumericUpDown>
-                    <Controls:NumericUpDown></Controls:NumericUpDown>
-                    <Controls:NumericUpDown IsEnabled="False"></Controls:NumericUpDown>
+                    <Controls:NumericUpDown Value="{Binding Data.M10Except}"/>
+                    <Controls:NumericUpDown Value="{Binding Data.M10Actual}"/>
+                    <Controls:NumericUpDown Value="{Binding Data.M10Different}" IsEnabled="False"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <Label Content="{StaticResource Month11}" />
-                    <Controls:NumericUpDown></Controls:NumericUpDown>
-                    <Controls:NumericUpDown></Controls:NumericUpDown>
-                    <Controls:NumericUpDown IsEnabled="False"></Controls:NumericUpDown>
+                    <Controls:NumericUpDown Value="{Binding Data.M11Except}"/>
+                    <Controls:NumericUpDown Value="{Binding Data.M11Actual}"/>
+                    <Controls:NumericUpDown Value="{Binding Data.M11Different}" IsEnabled="False"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <Label Content="{StaticResource Month12}" />
-                    <Controls:NumericUpDown></Controls:NumericUpDown>
-                    <Controls:NumericUpDown></Controls:NumericUpDown>
-                    <Controls:NumericUpDown IsEnabled="False"></Controls:NumericUpDown>
+                    <Controls:NumericUpDown Value="{Binding Data.M12Except}"/>
+                    <Controls:NumericUpDown Value="{Binding Data.M12Actual}"/>
+                    <Controls:NumericUpDown Value="{Binding Data.M12Different}" IsEnabled="False"/>
                 </StackPanel>
             </StackPanel>
         </Border>

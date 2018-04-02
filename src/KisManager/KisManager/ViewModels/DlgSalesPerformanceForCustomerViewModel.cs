@@ -1,29 +1,30 @@
 ﻿using Caliburn.Micro;
 using KisManager.Interfaces;
-using KisManager.Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using KisManager.Model;
+using System.Windows;
 
 namespace KisManager.ViewModels
 {
-    class TabPersonalSalesPerformanceViewModel : TabModulsBase
+    class DlgSalesPerformanceForCustomerViewModel : Screen
     {
-        private ICreator m_creator;
         private IWindowManager m_window;
+        private ICreator m_creator;
+        private IResourceProvider m_res;
 
-        public TabPersonalSalesPerformanceViewModel(IResourceProvider text, IWindowManager window, ICreator creator)
+        public DlgSalesPerformanceForCustomerViewModel(IResourceProvider res, IWindowManager window, ICreator creator)
         {
-            m_creator = creator;
+            DisplayName = "客户绩效";
             m_window = window;
-            DisplayName = text.GetText("PersonalSalesPerformance");
-
+            m_creator = creator;
+            m_res = res;
         }
-
-        public bool Loading { get; set; } = false;
+        public SalesPerformanceItem Root { get; set; }
 
         protected override async void OnViewAttached(object view, object context)
         {
@@ -33,43 +34,22 @@ namespace KisManager.ViewModels
             Random r = new Random();
             try
             {
-                Data.Add(await Create("张宏祥", r));
-                Data.Add(await Create("李广操", r));
-                Data.Add(await Create("陈玉增", r));
-                Data.Add(await Create("杨显连", r));
-                Data.Add(await Create("吴红丽", r));
-                Data.Add(await Create("刘杰  ", r));
-                Data.Add(await Create("夏培  ", r));
-                Data.Add(await Create("李芳成", r));
-                Data.Add(await Create("张永强", r));
-                Data.Add(await Create("陈燕芳", r));
-                Data.Add(await Create("谢万福", r));
-                Data.Add(await Create("裴沛  ", r));
-                Data.Add(await Create("黄焕云", r));
-                Data.Add(await Create("裴中应", r));
-                Data.Add(await Create("刘伟强", r));
-                Data.Add(await Create("黄涛  ", r));
-                Data.Add(await Create("谢正国", r));
-                Data.Add(await Create("张敬涛", r));
-                Data.Add(await Create("蔡慈作", r));
-                Data.Add(await Create("黎杰  ", r));
-                Data.Add(await Create("黄雪艳", r));
-                Data.Add(await Create("何林坚", r));
-                Data.Add(await Create("王亚海", r));
-                Data.Add(await Create("李永建", r));
-                Data.Add(await Create("欧盛邦", r));
-                Data.Add(await Create("李孝洋", r));
-                Data.Add(await Create("罗云华", r));
-                Data.Add(await Create("梅阳  ", r));
-                Data.Add(await Create("陶静  ", r));
-                Data.Add(await Create("丘增明", r));
-                Data.Add(await Create("苏永福", r));
-                Data.Add(await Create("郭丕敬", r));
-                Data.Add(await Create("蔡剑豪", r));
+                Data.Add(await Create("安徽安庆市 冯定平         ", r));
+                Data.Add(await Create("安徽安庆市容和农资有限公司 ", r));
+                Data.Add(await Create("安徽灵壁县光灵农资有限公司 ", r));
+                Data.Add(await Create("东至县创丰农资有限公司     ", r));
+                Data.Add(await Create("安徽铜陵县兴农农资经营部   ", r));
+                Data.Add(await Create("安徽宿松县维农农资经营部   ", r));
+                Data.Add(await Create("安徽太和县金土地农化有限公司", r));
+                Data.Add(await Create("安徽无为县城南农药经营部   ", r));
+                Data.Add(await Create("安徽合肥润禾农业科技有限公司", r));
+                Data.Add(await Create("安徽省明光市绿野农化有限公司", r));
+                Data.Add(await Create("安徽省蚌埠五河县青松农资总汇", r));
+                Data.Add(await Create("安徽南陵红宝种业有限公司   ", r));
+                Data.Add(await Create("安徽省舒城县李军农资经营部 ", r));
             }
             catch (Exception)
             {
-
             }
         }
 
@@ -123,7 +103,6 @@ namespace KisManager.ViewModels
             };
         }
 
-
         public ObservableCollection<SalesPerformanceItem> Data { get; set; } = new ObservableCollection<SalesPerformanceItem>();
 
         public override void TryClose(bool? dialogResult = null)
@@ -132,10 +111,33 @@ namespace KisManager.ViewModels
             Data.Clear();
         }
 
+        public SalesPerformanceItem CurrentData { get; set; }
+
+        public void Edit()
+        {
+            if (CurrentData != null)
+            {
+                var dlg = m_creator.CreateDialog<DlgSalesPerformanceEditViewModel>(o => o.Data = CurrentData);
+                var arg = new Dictionary<string, object>();
+                arg.Add("Width", 470);
+                arg.Add("Height", 560);
+                arg.Add("ResizeMode", 0);
+                m_window.ShowDialog(dlg, null, arg);
+            }
+        }
+
+        public void Reload()
+        {
+
+        }
+
+        public void Save()
+        {
+
+        }
         public void ShowSalesPerformance(SalesPerformanceItem obj)
         {
-            var dlg = m_creator.CreateDialog<DlgSalesPerformanceForCustomerViewModel>(o => o.Root = obj);
-            m_window.ShowDialog(dlg);
+            MessageBox.Show(obj.Name+"->绩效明细项目");
         }
 
     }

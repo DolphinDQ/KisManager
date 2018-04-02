@@ -13,7 +13,8 @@ namespace KisManager.Controls
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return (bool)value == false ? Visibility.Collapsed : Visibility.Visible;
+            var a= (bool)value == false ? Visibility.Collapsed : Visibility.Visible;
+            return a;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

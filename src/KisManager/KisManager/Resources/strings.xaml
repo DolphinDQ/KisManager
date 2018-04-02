@@ -12,6 +12,8 @@
     <sys:String x:Key="SalesPerformanceReport">预算报表</sys:String>
     <sys:String x:Key="ClassList">科目表</sys:String>
     <sys:String x:Key="AreaName">区域名称</sys:String>
+    <sys:String x:Key="UserName">用户名称</sys:String>
+    <sys:String x:Key="CustomerName">客户名称</sys:String>
     <sys:String x:Key="YearSummary">年度统计</sys:String>
     <sys:String x:Key="ExpectPerformance">计划业绩</sys:String>
     <sys:String x:Key="ActualPerformance">实际业绩</sys:String>
@@ -28,9 +30,13 @@
     <sys:String x:Key="Month10">十月</sys:String>
     <sys:String x:Key="Month11">十一月</sys:String>
     <sys:String x:Key="Month12">十二月</sys:String>
-    <sys:String x:Key="UserName">用户名称</sys:String>
     <sys:String x:Key="SalesPerformance">销售业绩</sys:String>
     <sys:String x:Key="EditSalesPerformance">销售业绩设置</sys:String>
+    <sys:String x:Key="Query">查询</sys:String>
+    <sys:String x:Key="Edit">编辑</sys:String>
+    <sys:String x:Key="Save">保存</sys:String>
+    <sys:String x:Key="Export">导出</sys:String>
+    <sys:String x:Key="Filter">筛选条件</sys:String>
     
 
 </ResourceDictionary>

@@ -18,9 +18,9 @@ namespace KisManager.Views
     /// <summary>
     /// DlgAreaSalesPerformanceView.xaml 的交互逻辑
     /// </summary>
-    public partial class DlgAreaSalesPerformanceView : UserControl
+    public partial class DlgSalesPerformanceForCustomerView : UserControl
     {
-        public DlgAreaSalesPerformanceView()
+        public DlgSalesPerformanceForCustomerView()
         {
             InitializeComponent();
         }

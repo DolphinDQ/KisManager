@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
+using System.Windows.Data;
 using System.Windows.Media;
 
 namespace KisManager.Controls
@@ -20,10 +21,10 @@ namespace KisManager.Controls
             IsReadOnly = true;
         }
 
-    
+
         protected override FrameworkElement GenerateElement(DataGridCell cell, object dataItem)
         {
-            var ui = base.GenerateElement(cell, dataItem); ;
+            var ui = base.GenerateElement(cell, dataItem);
             if (Columns.Any())
             {
                 var panel = new StackPanel();
@@ -32,12 +33,9 @@ namespace KisManager.Controls
                 panel.HorizontalAlignment = HorizontalAlignment.Center;
                 foreach (var item in Columns)
                 {
-                    var i = (DataGridMergeColumn)item;
-                    panel.Children.Add(new ContentControl()
-                    {
-                        Width = i.Width.DisplayValue,
-                        Content = i.GenerateElement(cell, dataItem)
-                    });
+                    var content = ((DataGridMergeColumn)item);
+                    var i = content.GenerateElement(cell, dataItem);
+                    panel.Children.Add(i);
                 }
                 ui = panel;
             }
@@ -46,17 +44,25 @@ namespace KisManager.Controls
                 ui = new Label()
                 {
                     Content = ui,
-                    Background = Background,
-                    Padding = new Thickness(0),
-                    Margin = new Thickness(0),
-                    VerticalContentAlignment = VerticalAlignment.Center,
                     Height = 28,
                     HorizontalContentAlignment = HorizontalAlignment.Right,
-                    Visibility = Show,
+                    VerticalContentAlignment = VerticalAlignment.Center,
                 };
+                ui.SetBinding(FrameworkElement.MinWidthProperty, BindingTo("MinWidth"));
+                ui.SetBinding(FrameworkElement.WidthProperty, BindingTo("Width"));
+                ui.SetBinding(UIElement.VisibilityProperty, BindingTo("Visibility"));
+                ui.SetBinding(Control.BackgroundProperty, BindingTo("Background"));
             }
             return ui;
         }
+
+        private Binding BindingTo(string propertyName)
+        {
+            var binding = new Binding(propertyName);
+            binding.Source = this;
+            return binding;
+        }
+
 
         public object ExHeader
         {
@@ -86,15 +92,15 @@ namespace KisManager.Controls
         public static readonly DependencyProperty BackgroundProperty =
             DependencyProperty.Register("Background", typeof(Brush), typeof(DataGridMergeColumn), new PropertyMetadata(Brushes.Transparent));
 
-        public Visibility Show
-        {
-            get { return (Visibility)GetValue(ShowProperty); }
-            set { SetValue(ShowProperty, value); }
-        }
+        //public Visibility Show
+        //{
+        //    get { return (Visibility)GetValue(ShowProperty); }
+        //    set { SetValue(ShowProperty, value); }
+        //}
 
-        // Using a DependencyProperty as the backing store for Show.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty ShowProperty =
-            DependencyProperty.Register("Show", typeof(Visibility), typeof(DataGridMergeColumn), new PropertyMetadata(Visibility.Visible));
+        //// Using a DependencyProperty as the backing store for Show.  This enables animation, styling, binding, etc...
+        //public static readonly DependencyProperty ShowProperty =
+        //    DependencyProperty.Register("Show", typeof(Visibility), typeof(DataGridMergeColumn), new PropertyMetadata(Visibility.Visible));
 
 
         public ObservableCollection<DataGridTextColumn> Columns { get; set; }
