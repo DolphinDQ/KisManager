@@ -57,6 +57,7 @@ namespace KisManager.ViewModels
                 Data.Add(await Create("李孝洋", "农舟行微乳剂     ", r));
                 Data.Add(await Create("罗云华", "银锐水分散颗粒剂 ", r));
                 Data.Add(await Create("梅阳  ", " 银锐水分散颗粒剂 ", r));
+                Data.OrderBy(o => o.Id);
             }
             catch (Exception e)
             {
@@ -73,8 +74,8 @@ namespace KisManager.ViewModels
                 Salesman = name,
                 Name = itemName,
                 OutStorageDate = DateTime.Now - TimeSpan.FromMinutes(r.Next(30 * 24 * 60, 2 * 365 * 24 * 60)),
-                Id = "FI.H." + r.Next(10000, 99999),
-                OutStorageId = "O.SI." + r.Next(10000, 99999),
+                Id = "11.01.0"+r.Next(10, 99),
+                OutStorageId = "XOUT" + r.Next(10000, 99999),
                 ConsignPrice = Math.Round(price, 2),
                 ConsignAmount = Math.Round(price * (1 + r.NextDouble()), 2)
             };

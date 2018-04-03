@@ -137,15 +137,11 @@ namespace KisManager.ViewModels
         }
         public void ShowSalesPerformance(SalesPerformanceItem obj)
         {
-            if (CurrentData != null)
-            {
-                var dlg = m_creator.CreateDialog<DlgSaleItemsViewModel>();
-                var arg = new Dictionary<string, object>();
-                arg.Add("Width", 640);
-                arg.Add("Height", 480);
-                m_window.ShowDialog(dlg, null, arg);
-            }
-
+            var dlg = m_creator.CreateDialog<DlgSaleItemsViewModel>();
+            var arg = new Dictionary<string, object>();
+            arg.Add("Width", 640);
+            arg.Add("Height", 480);
+            m_window.ShowDialog(dlg, null, arg);
         }
 
     }

@@ -11,6 +11,7 @@
                     <common:HiddenIfNullConverter x:Key="HiddenIfNull"/>
                     <common:HiddenIfFalseConverter x:Key="HiddenIfFalse"/>
                     <common:GenderConverter x:Key="GenderConverter"/>
+                    <common:DateTimeConverter x:Key="DateTime"/>
                 </ResourceDictionary>
                 <!-- MahApps.Metro resource dictionaries. Make sure that all file names are Case Sensitive! -->
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.xaml" />

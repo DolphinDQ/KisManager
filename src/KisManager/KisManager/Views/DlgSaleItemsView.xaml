@@ -59,16 +59,36 @@
                         ColumnWidth="SizeToHeader"
                         IsReadOnly="True"
                         CanUserAddRows="False"
+                        LoadingRow="DataGrid_LoadingRow"
                         EnableColumnVirtualization="True"
                         EnableRowVirtualization="True">
                     <DataGrid.Columns>
-                        <DataGridTextColumn MinWidth="100" Header="{StaticResource ID}"  Binding="{Binding Id}"/>
+                        <DataGridTemplateColumn Header="{StaticResource ID}"  MinWidth="50" IsReadOnly="True">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type DataGridRow}}, Path=Header}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0"></TextBlock>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
                         <DataGridTextColumn MinWidth="100" Header="{StaticResource OutStorageId}"  Binding="{Binding OutStorageId}"/>
-                        <DataGridTextColumn MinWidth="100" Header="{StaticResource OutStorageDate}" Binding="{Binding OutStorageDate}"/>
-                        <DataGridTextColumn MinWidth="100" Header="{StaticResource Salesman}" Binding="{Binding Salesman}"/>
+                        <DataGridTextColumn MinWidth="100" Header="{StaticResource OutStorageDate}" Binding="{Binding OutStorageDate,Converter={StaticResource DateTime}}"/>
+                        <DataGridTextColumn MinWidth="100" Header="{StaticResource ItemId}"  Binding="{Binding Id}"/>
                         <DataGridTextColumn MinWidth="150" Header="{StaticResource ItemName}" Binding="{Binding Name}"/>
-                        <DataGridTextColumn MinWidth="80" Header="{StaticResource ConsignPrice}" Binding="{Binding ConsignPrice}"/>
-                        <DataGridTextColumn MinWidth="80" Header="{StaticResource ConsignAmount}" Binding="{Binding ConsignAmount}"/>
+                        <DataGridTemplateColumn MinWidth="80" Header="{StaticResource ConsignPrice}">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <ItemContainerTemplate>
+                                    <Label HorizontalContentAlignment="Right" Content="{Binding ConsignPrice}"></Label>
+                                </ItemContainerTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn MinWidth="80" Header="{StaticResource ConsignAmount}">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <ItemContainerTemplate>
+                                    <Label HorizontalContentAlignment="Right" Content="{Binding ConsignAmount}"></Label>
+                                </ItemContainerTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTextColumn MinWidth="100" Header="{StaticResource Salesman}" Binding="{Binding Salesman}"/>
                     </DataGrid.Columns>
                 </DataGrid>
             </Border>

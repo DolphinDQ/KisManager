@@ -190,7 +190,7 @@
                     <DataGridTemplateColumn  MinWidth="300" Header="{StaticResource CustomerName}" >
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Label HorizontalContentAlignment="Center" Cursor="Hand" cal:Message.Attach="[Event MouseDown]=[Action ShowSalesPerformance($dataContext)]">
+                                <Label HorizontalContentAlignment="Left" Cursor="Hand" cal:Message.Attach="[Event MouseDown]=[Action ShowSalesPerformance($dataContext)]">
                                     <TextBlock TextDecorations="Underline"  Foreground="DodgerBlue" FontSize="18" Text="{Binding Name}"></TextBlock>
                                 </Label>
                             </DataTemplate>

@@ -32,6 +32,7 @@ namespace KisManager.ViewModels
             Random r = new Random();
             try
             {
+                Data.Add(await Create("安徽", r));
                 Data.Add(await Create("广东", r));
                 Data.Add(await Create("广西", r));
                 Data.Add(await Create("湖北", r));

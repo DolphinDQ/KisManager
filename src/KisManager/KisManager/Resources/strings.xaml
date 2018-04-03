@@ -51,11 +51,12 @@
     <sys:String x:Key="DepartmentCode">部门编码</sys:String>
     <sys:String x:Key="DepartmentDuty">部门职责</sys:String>
     
-    <sys:String x:Key="SaleItemsDetail">出售项目明细</sys:String>
+    <sys:String x:Key="SaleItemsDetail">出售明细表</sys:String>
     <sys:String x:Key="AccountingYear">会计年度</sys:String>
     <sys:String x:Key="AccountingPeriod">会计期间</sys:String>
     <sys:String x:Key="SetOfBook">帐套</sys:String>
     <sys:String x:Key="ID">序号</sys:String>
+    <sys:String x:Key="ItemId">产品编号</sys:String>
     <sys:String x:Key="OutStorageId">出库单号</sys:String>
     <sys:String x:Key="OutStorageDate">出库日期</sys:String>
     <sys:String x:Key="Salesman">业务员</sys:String>
