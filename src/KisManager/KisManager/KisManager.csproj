@@ -96,6 +96,7 @@
     </ApplicationDefinition>
     <Compile Include="AppBootstrapper.cs" />
     <Compile Include="Common\ConfigProvider.cs" />
+    <Compile Include="Controls\DataGridBehaviour.cs" />
     <Compile Include="Controls\DataGridMergeColumn.cs" />
     <Compile Include="Controls\DateTimeConverter.cs" />
     <Compile Include="Controls\GenderConverter.cs" />
