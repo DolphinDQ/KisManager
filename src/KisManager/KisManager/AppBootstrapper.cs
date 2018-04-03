@@ -37,6 +37,7 @@ namespace KisManager
             container.PerRequest<DlgViewModel>();
             container.PerRequest<DlgSalesPerformanceForCustomerViewModel>();
             container.PerRequest<DlgSalesPerformanceEditViewModel>();
+            container.PerRequest<DlgSaleItemsViewModel>();
             container.PerRequest<IModule, TabAreaSalesPerformanceViewModel>(nameof(TabAreaSalesPerformanceViewModel));
             container.PerRequest<IModule, TabPersonalSalesPerformanceViewModel>(nameof(TabPersonalSalesPerformanceViewModel));
             container.PerRequest<IModule, TabSalesPerformanceReportViewModel>(nameof(TabSalesPerformanceReportViewModel));

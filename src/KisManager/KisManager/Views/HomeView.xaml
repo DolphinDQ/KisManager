@@ -65,7 +65,7 @@
                                 <TextBlock Text="{DynamicResource PersonalSalesPerformance}"></TextBlock>
                             </StackPanel>
                         </Button>
-                        <Button cal:Message.Attach="Open('TabSalesPerformanceReportViewModel')">
+                        <Button  IsEnabled="False" cal:Message.Attach="Open('TabSalesPerformanceReportViewModel')">
                             <StackPanel>
                                 <icon:PackIconModern HorizontalAlignment="Center" Width="25" Height="25" Kind="Pie" />
                                 <TextBlock Text="{DynamicResource SalesPerformanceReport}"></TextBlock>
@@ -74,8 +74,8 @@
                     </StackPanel>
                 </Border>
                 <Border>
-                    <StackPanel Orientation="Horizontal">
-                        <Button>
+                    <StackPanel Orientation="Horizontal" >
+                        <Button IsEnabled="False">
                             <StackPanel>
                                 <icon:PackIconModern HorizontalAlignment="Center" Width="22" Height="25" Kind="Book" />
                                 <TextBlock Text="{DynamicResource ClassList}"></TextBlock>

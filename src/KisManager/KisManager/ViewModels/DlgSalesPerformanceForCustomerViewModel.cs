@@ -137,7 +137,15 @@ namespace KisManager.ViewModels
         }
         public void ShowSalesPerformance(SalesPerformanceItem obj)
         {
-            MessageBox.Show(obj.Name+"->绩效明细项目");
+            if (CurrentData != null)
+            {
+                var dlg = m_creator.CreateDialog<DlgSaleItemsViewModel>();
+                var arg = new Dictionary<string, object>();
+                arg.Add("Width", 640);
+                arg.Add("Height", 480);
+                m_window.ShowDialog(dlg, null, arg);
+            }
+
         }
 
     }

@@ -23,7 +23,6 @@ namespace KisManager.ViewModels
 
         }
 
-        public bool Loading { get; set; } = false;
 
         protected override async void OnViewAttached(object view, object context)
         {

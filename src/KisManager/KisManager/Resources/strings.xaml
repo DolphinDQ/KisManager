@@ -37,6 +37,31 @@
     <sys:String x:Key="Save">保存</sys:String>
     <sys:String x:Key="Export">导出</sys:String>
     <sys:String x:Key="Filter">筛选条件</sys:String>
+    <sys:String x:Key="EmployeesIdOrName">职员工号/名称</sys:String>
+    <sys:String x:Key="AddEmployee">添加职员</sys:String>
+    <sys:String x:Key="EmployeesName">职员名称</sys:String>
+    <sys:String x:Key="EmployeesID">职员代码</sys:String>
+    <sys:String x:Key="EnglishName">英文名</sys:String>
+    <sys:String x:Key="Gender">性别</sys:String>
+    <sys:String x:Key="MobilePhone">手机</sys:String>
+    <sys:String x:Key="Email">邮箱</sys:String>
+    <sys:String x:Key="DepartmentIdOrName">部门编号/名称</sys:String>
+    <sys:String x:Key="AddDepartment">添加部门</sys:String>
+    <sys:String x:Key="DepartmentName">部门名称</sys:String>
+    <sys:String x:Key="DepartmentCode">部门编码</sys:String>
+    <sys:String x:Key="DepartmentDuty">部门职责</sys:String>
     
+    <sys:String x:Key="SaleItemsDetail">出售项目明细</sys:String>
+    <sys:String x:Key="AccountingYear">会计年度</sys:String>
+    <sys:String x:Key="AccountingPeriod">会计期间</sys:String>
+    <sys:String x:Key="SetOfBook">帐套</sys:String>
+    <sys:String x:Key="ID">序号</sys:String>
+    <sys:String x:Key="OutStorageId">出库单号</sys:String>
+    <sys:String x:Key="OutStorageDate">出库日期</sys:String>
+    <sys:String x:Key="Salesman">业务员</sys:String>
+    <sys:String x:Key="ItemName">产品名称</sys:String>
+    <sys:String x:Key="ConsignPrice">含税单价</sys:String>
+    <sys:String x:Key="ConsignAmount">含税金额</sys:String>
+
 
 </ResourceDictionary>

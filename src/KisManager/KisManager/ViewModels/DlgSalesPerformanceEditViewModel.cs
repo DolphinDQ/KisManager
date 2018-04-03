@@ -17,5 +17,6 @@ namespace KisManager.ViewModels
         }
 
         public SalesPerformanceItem Data { get; set; }
+
     }
 }

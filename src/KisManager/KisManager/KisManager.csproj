@@ -97,6 +97,7 @@
     <Compile Include="AppBootstrapper.cs" />
     <Compile Include="Common\ConfigProvider.cs" />
     <Compile Include="Controls\DataGridMergeColumn.cs" />
+    <Compile Include="Controls\GenderConverter.cs" />
     <Compile Include="Controls\HiddenIfFalseConverter.cs" />
     <Compile Include="Controls\HiddenIfNullConverter.cs" />
     <Compile Include="Common\ResourceProvider.cs" />
@@ -110,7 +111,11 @@
     <Compile Include="Interfaces\IShell.cs" />
     <Compile Include="Interfaces\IModule.cs" />
     <Compile Include="Interfaces\IResourceProvider.cs" />
+    <Compile Include="Model\DepartmentItem.cs" />
+    <Compile Include="Model\EmployeeItem.cs" />
+    <Compile Include="Model\SaleItem.cs" />
     <Compile Include="Model\SalesPerformanceItem.cs" />
+    <Compile Include="ViewModels\DlgSaleItemsViewModel.cs" />
     <Compile Include="ViewModels\DlgSalesPerformanceForCustomerViewModel.cs" />
     <Compile Include="ViewModels\DlgSalesPerformanceEditViewModel.cs" />
     <Compile Include="ViewModels\DlgViewModel.cs" />
@@ -127,6 +132,9 @@
     <Compile Include="ViewModels\TabSalesPerformanceReportViewModel.cs" />
     <Compile Include="ViewModels\TabSetDepartmentViewModel.cs" />
     <Compile Include="ViewModels\TabSetEmploymentViewModel.cs" />
+    <Compile Include="Views\DlgSaleItemsView.xaml.cs">
+      <DependentUpon>DlgSaleItemsView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\DlgSalesPerformanceForCustomerView.xaml.cs">
       <DependentUpon>DlgSalesPerformanceForCustomerView.xaml</DependentUpon>
     </Compile>
@@ -174,6 +182,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ShellView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DlgSaleItemsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

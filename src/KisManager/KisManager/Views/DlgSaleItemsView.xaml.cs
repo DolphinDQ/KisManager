@@ -16,15 +16,13 @@ using System.Windows.Shapes;
 namespace KisManager.Views
 {
     /// <summary>
-    /// Interaction logic for TabAreaSalesPerformanceView.xaml
+    /// Interaction logic for DlgItemsView.xaml
     /// </summary>
-    public partial class TabAreaSalesPerformanceView : UserControl
+    public partial class DlgSaleItemsView : UserControl
     {
-        public TabAreaSalesPerformanceView()
+        public DlgSaleItemsView()
         {
             InitializeComponent();
         }
-
-     
     }
 }

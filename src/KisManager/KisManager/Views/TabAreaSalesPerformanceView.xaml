@@ -4,8 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:KisManager.Views"
-             xmlns:cal="http://www.caliburnproject.org"
              xmlns:c="clr-namespace:KisManager.Controls"
+             xmlns:cal="http://www.caliburnproject.org"
              xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
              mc:Ignorable="d" 
              d:DesignHeight="800" d:DesignWidth="1024">
@@ -36,8 +36,8 @@
                     </StackPanel>
                 </Grid>
             </Border>
-            <Border Style="{DynamicResource QueryPageContent}" Name="B">
-                <DataGrid FrozenColumnCount="1" Name="G" ItemsSource="{Binding Data}"
+            <Border Style="{DynamicResource QueryPageContent}">
+                <DataGrid FrozenColumnCount="1"  ItemsSource="{Binding Data}"
                         AutoGenerateColumns="False"
                         ColumnWidth="SizeToHeader"
                         IsReadOnly="True"

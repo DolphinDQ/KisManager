@@ -16,5 +16,7 @@ namespace KisManager.ViewModels
         {
             DisplayName = GetType().Name;
         }
+
+        public bool Loading { get; set; } = false;
     }
 }
