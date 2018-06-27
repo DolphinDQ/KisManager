@@ -13,7 +13,7 @@
         <Style BasedOn="{StaticResource DefaultBorder}" TargetType="Border"/>
         <Style x:Key="Top" >
             <Style.Resources>
-                <Style TargetType="Button" BasedOn="{StaticResource MetroButton}">
+                <Style TargetType="Button" BasedOn="{StaticResource DefaultButton}">
                     <Setter Property="Width" Value="85"/>
                     <Setter Property="Height" Value="80"/>
                     <Setter Property="Margin" Value="1 1 2 1"/>
@@ -21,7 +21,7 @@
                 <Style TargetType="Border">
                     <Setter Property="Margin" Value="0 0 4 0"/>
                     <Setter Property="Padding" Value="0 0 2 0"/>
-                    <Setter Property="BorderBrush" Value="Gray" />
+                    <Setter Property="BorderBrush" Value="{StaticResource AccentColorBrush3}" />
                     <Setter Property="BorderThickness" Value="0 0 1 0"/>
                 </Style>
                 <Style TargetType="TextBlock">
@@ -33,9 +33,19 @@
         </Style>
     </UserControl.Resources>
     <DockPanel>
-        <Border DockPanel.Dock="Top"  BorderBrush="Gray" BorderThickness="1">
+        <Border DockPanel.Dock="Top" >
             <StackPanel Orientation="Horizontal"  Style="{StaticResource Top}">
                 <Border>
+                    <StackPanel Orientation="Horizontal">
+                        <Button cal:Message.Attach="Open('TabBomAnalysisViewModel')" >
+                            <StackPanel>
+                                <icon:PackIconModern HorizontalAlignment="Center" Width="32" Height="25" Kind="PageSearch" />
+                                <TextBlock Text="{DynamicResource BomAnalysis}"></TextBlock>
+                            </StackPanel>
+                        </Button>
+                    </StackPanel>
+                </Border>
+                <Border IsEnabled="False">
                     <StackPanel Orientation="Horizontal">
                         <Button cal:Message.Attach="Open('TabSetDepartmentViewModel')">
                             <StackPanel>
@@ -51,7 +61,7 @@
                         </Button>
                     </StackPanel>
                 </Border>
-                <Border>
+                <Border Visibility="Collapsed">
                     <StackPanel Orientation="Horizontal">
                         <Button cal:Message.Attach="Open('TabAreaSalesPerformanceViewModel')">
                             <StackPanel>
@@ -73,7 +83,7 @@
                         </Button>
                     </StackPanel>
                 </Border>
-                <Border>
+                <Border IsEnabled="False">
                     <StackPanel Orientation="Horizontal" >
                         <Button IsEnabled="False">
                             <StackPanel>
@@ -97,8 +107,8 @@
                     <ItemContainerTemplate>
                         <StackPanel Orientation="Horizontal">
                             <TextBlock FontSize="18" Text="{Binding DisplayName}"></TextBlock>
-                            <Button Margin="5 0 0 0" Width="20" Height="20" cal:Message.Attach="Close($dataContext)" Style="{DynamicResource MahApps.Metro.Styles.MetroCircleButtonStyle}">
-                                <icon:PackIconModern Width="10" Height="10" Kind="Close" ></icon:PackIconModern>
+                            <Button Margin="5 0 0 0" Width="30" Height="30" cal:Message.Attach="Close($dataContext)" Style="{DynamicResource MetroCircleButtonStyle}">
+                                <icon:PackIconModern Width="10" Height="10" Kind="Close" Background="{StaticResource AccentColorBrush3}" ></icon:PackIconModern>
                             </Button>
                         </StackPanel>
                     </ItemContainerTemplate>

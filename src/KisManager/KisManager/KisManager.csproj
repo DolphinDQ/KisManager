@@ -104,6 +104,7 @@
     <Compile Include="Controls\HiddenIfNullConverter.cs" />
     <Compile Include="Common\ResourceProvider.cs" />
     <Compile Include="Common\GlobalExtensions.cs" />
+    <Compile Include="Global.cs" />
     <Compile Include="Interfaces\ICreator.cs" />
     <Compile Include="Interfaces\IDialogContent.cs" />
     <Compile Include="Interfaces\IDialogProvider.cs" />
@@ -113,13 +114,8 @@
     <Compile Include="Interfaces\IShell.cs" />
     <Compile Include="Interfaces\IModule.cs" />
     <Compile Include="Interfaces\IResourceProvider.cs" />
-    <Compile Include="Model\DepartmentItem.cs" />
-    <Compile Include="Model\EmployeeItem.cs" />
-    <Compile Include="Model\SaleItem.cs" />
-    <Compile Include="Model\SalesPerformanceItem.cs" />
-    <Compile Include="ViewModels\DlgSaleItemsViewModel.cs" />
-    <Compile Include="ViewModels\DlgSalesPerformanceForCustomerViewModel.cs" />
-    <Compile Include="ViewModels\DlgSalesPerformanceEditViewModel.cs" />
+    <Compile Include="Model\IcBomItem.cs" />
+    <Compile Include="Model\IcBomItemModel.cs" />
     <Compile Include="ViewModels\DlgViewModel.cs" />
     <Compile Include="ViewModels\HomeViewModel.cs" />
     <Compile Include="ViewModels\SettingsViewModel.cs" />
@@ -128,21 +124,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="ViewModels\TabBomAnalysisViewModel.cs" />
     <Compile Include="ViewModels\TabModulsBase.cs" />
-    <Compile Include="ViewModels\TabAreaSalesPerformanceViewModel.cs" />
-    <Compile Include="ViewModels\TabPersonalSalesPerformanceViewModel.cs" />
-    <Compile Include="ViewModels\TabSalesPerformanceReportViewModel.cs" />
-    <Compile Include="ViewModels\TabSetDepartmentViewModel.cs" />
-    <Compile Include="ViewModels\TabSetEmploymentViewModel.cs" />
-    <Compile Include="Views\DlgSaleItemsView.xaml.cs">
-      <DependentUpon>DlgSaleItemsView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\DlgSalesPerformanceForCustomerView.xaml.cs">
-      <DependentUpon>DlgSalesPerformanceForCustomerView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\DlgSalesPerformanceEditView.xaml.cs">
-      <DependentUpon>DlgSalesPerformanceEditView.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\DlgView.xaml.cs">
       <DependentUpon>DlgView.xaml</DependentUpon>
     </Compile>
@@ -152,21 +135,13 @@
     <Compile Include="Views\SettingsView.xaml.cs">
       <DependentUpon>SettingsView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\TabAreaSalesPerformanceView.xaml.cs">
-      <DependentUpon>TabAreaSalesPerformanceView.xaml</DependentUpon>
+    <Compile Include="Views\TabBomAnalysisView.xaml.cs">
+      <DependentUpon>TabBomAnalysisView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\TabPersonalSalesPerformanceView.xaml.cs">
-      <DependentUpon>TabPersonalSalesPerformanceView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\TabSalesPerformanceReportView.xaml.cs">
-      <DependentUpon>TabSalesPerformanceReportView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\TabSetDepartmentView.xaml.cs">
-      <DependentUpon>TabSetDepartmentView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\TabSetEmploymentView.xaml.cs">
-      <DependentUpon>TabSetEmploymentView.xaml</DependentUpon>
-    </Compile>
+    <Page Include="Resources\Colors.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Resources\GlobalStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -187,18 +162,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\DlgSaleItemsView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\DlgSalesPerformanceForCustomerView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\DlgSalesPerformanceEditView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Views\DlgView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -211,23 +174,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\TabAreaSalesPerformanceView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\TabPersonalSalesPerformanceView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\TabSalesPerformanceReportView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\TabSetDepartmentView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\TabSetEmploymentView.xaml">
+    <Page Include="Views\TabBomAnalysisView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

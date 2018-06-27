@@ -1,0 +1,28 @@
+﻿<UserControl x:Class="KisManager.Views.TabBomAnalysisView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:KisManager.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <DataGrid ItemsSource="{Binding IcBomList}" AutoGenerateColumns="False" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="序号" Binding="{Binding Index}" />
+                <DataGridTextColumn Header="BOM层次" Binding="{Binding BomLayer}" />
+                <DataGridTextColumn Header="物料编号" Binding="{Binding ItemId}" />
+                <DataGridTextColumn Header="物料描述" Binding="{Binding ItemDescription}" />
+                <DataGridTextColumn Header="规格" Binding="{Binding ItemModel}" />
+                <DataGridTextColumn Header="用量" Binding="{Binding Amount}" />
+                <DataGridTextColumn Header="库存数" Binding="{Binding CountOfStorage}" />
+                <DataGridTextColumn Header="不良库存数" Binding="{Binding CountOfBadProduct}" />
+                <DataGridTextColumn Header="数量差异（需用量-库存数）" Binding="{Binding CountOfDiffProduct}" />
+                <DataGridTextColumn Header="在途量（已采未回）" Binding="{Binding CountOfOnTheWayProduct}" />
+                <DataGridTextColumn Header="采购周期" Binding="{Binding BuyInterval}" />
+                <DataGridTextColumn Header="供应商" Binding="{Binding Supplier}" />
+            </DataGrid.Columns>
+
+        </DataGrid>
+    </Grid>
+</UserControl>

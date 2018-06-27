@@ -2,9 +2,10 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:sys ="clr-namespace:System;assembly=mscorlib"
                     xmlns:local="clr-namespace:KisManager.Resources">
-    <sys:String x:Key="AppName">销售业绩管理</sys:String>
+    <sys:String x:Key="AppName">BOM投料分析</sys:String>
     <sys:String x:Key="Home">首页</sys:String>
     <sys:String x:Key="Settings">设置</sys:String>
+    <sys:String x:Key="BomAnalysis">BOM分析</sys:String>
     <sys:String x:Key="SetDepartment">部门设置</sys:String>
     <sys:String x:Key="SetEmployment">职员设置</sys:String>
     <sys:String x:Key="AreaSalesPerformance">区域业绩</sys:String>

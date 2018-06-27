@@ -2,13 +2,40 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:c="clr-namespace:KisManager.Controls"
                     xmlns:local="clr-namespace:KisManager.Resources">
+    <SolidColorBrush x:Key="AccentBaseColorBrush" Color="{DynamicResource AccentBaseColor}" />
+    <SolidColorBrush x:Key="AccentColorBrush" Color="{DynamicResource AccentColor}" />
+    <SolidColorBrush x:Key="AccentColorBrush2" Color="{DynamicResource AccentColor2}" />
+    <SolidColorBrush x:Key="AccentColorBrush3" Color="{DynamicResource AccentColor3}" />
+    <SolidColorBrush x:Key="AccentColorBrush4" Color="{DynamicResource AccentColor4}" />
+    <SolidColorBrush x:Key="GrayBrush1" Color="{DynamicResource Gray1}" />
+    <SolidColorBrush x:Key="GrayBrush2" Color="{DynamicResource Gray2}" />
+    <SolidColorBrush x:Key="GrayBrush3" Color="{DynamicResource Gray3}" />
+    <SolidColorBrush x:Key="GrayBrush4" Color="{DynamicResource Gray4}" />
+    <SolidColorBrush x:Key="GrayBrush5" Color="{DynamicResource Gray5}" />
+    <SolidColorBrush x:Key="GrayBrush6" Color="{DynamicResource Gray6}" />
+    <SolidColorBrush x:Key="GrayBrush7" Color="{DynamicResource Gray7}" />
+    <SolidColorBrush x:Key="GrayBrush8" Color="{DynamicResource Gray8}" />
+    <SolidColorBrush x:Key="GrayBrush9" Color="{DynamicResource Gray9}" />
+    <SolidColorBrush x:Key="GrayBrush10" Color="{DynamicResource Gray10}" />
     <Style x:Key="DefaultBorder" TargetType="Border">
         <Setter Property="Margin" Value="1"/>
         <Setter Property="Padding" Value="1"/>
-        <Setter Property="BorderBrush" Value="Gray"/>
+        <Setter Property="BorderBrush" Value="{StaticResource AccentColorBrush}"/>
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="CornerRadius" Value="3"/>
     </Style>
+    <Style x:Key="DefaultCheckBox" TargetType="CheckBox" BasedOn="{StaticResource MetroCheckBox}">
+        <Setter Property="BorderBrush" Value="{StaticResource AccentColorBrush}"/>
+    </Style>
+    <Style x:Key="DefaultComboBox" TargetType="ComboBox" BasedOn="{StaticResource MetroComboBox}">
+        <Setter Property="BorderBrush" Value="{StaticResource AccentColorBrush}"/>
+    </Style>
+    <Style x:Key="DefaultButton" TargetType="ButtonBase" BasedOn="{StaticResource MetroButton}">
+        <Setter Property="BorderBrush" Value="{StaticResource AccentColorBrush}"/>
+    </Style> 
+    <Style TargetType="CheckBox" BasedOn="{StaticResource DefaultCheckBox}"/>
+    <Style TargetType="ComboBox" BasedOn="{StaticResource DefaultComboBox}"/>
+    <Style TargetType="ButtonBase" BasedOn="{StaticResource DefaultButton}"/>
     <Style x:Key="QueryPageTop" BasedOn="{StaticResource DefaultBorder}" TargetType="Border">
         <Setter Property="Padding" Value="2"/>
         <Style.Resources>
@@ -16,7 +43,7 @@
                 <Setter Property="Margin" Value="3 0"/>
                 <Setter Property="FontFamily" Value="微软雅黑"/>
             </Style>
-            <Style TargetType="CheckBox" BasedOn="{StaticResource MetroCheckBox}">
+            <Style TargetType="CheckBox" BasedOn="{StaticResource DefaultCheckBox}">
                 <Setter Property="FontFamily" Value="微软雅黑"/>
                 <Setter Property="Margin" Value="3 0"/>
             </Style>

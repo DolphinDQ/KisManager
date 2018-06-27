@@ -49,5 +49,7 @@ namespace KisManager.Config
         public string AcctName => Kis<string>(0x68030001, BindingFlags.GetProperty);
 
         public bool IsIndustry => Kis<bool>(0x68030000, BindingFlags.GetProperty);
+
+
     }
 }

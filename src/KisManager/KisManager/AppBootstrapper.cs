@@ -35,14 +35,16 @@ namespace KisManager
             container.PerRequest<IHome, HomeViewModel>();
             container.PerRequest<ISettings, SettingsViewModel>();
             container.PerRequest<DlgViewModel>();
-            container.PerRequest<DlgSalesPerformanceForCustomerViewModel>();
-            container.PerRequest<DlgSalesPerformanceEditViewModel>();
-            container.PerRequest<DlgSaleItemsViewModel>();
-            container.PerRequest<IModule, TabAreaSalesPerformanceViewModel>(nameof(TabAreaSalesPerformanceViewModel));
-            container.PerRequest<IModule, TabPersonalSalesPerformanceViewModel>(nameof(TabPersonalSalesPerformanceViewModel));
-            container.PerRequest<IModule, TabSalesPerformanceReportViewModel>(nameof(TabSalesPerformanceReportViewModel));
-            container.PerRequest<IModule, TabSetDepartmentViewModel>(nameof(TabSetDepartmentViewModel));
-            container.PerRequest<IModule, TabSetEmploymentViewModel>(nameof(TabSetEmploymentViewModel));
+            //container.PerRequest<DlgSalesPerformanceForCustomerViewModel>();
+            //container.PerRequest<DlgSalesPerformanceEditViewModel>();
+            //container.PerRequest<DlgSaleItemsViewModel>();
+            //container.PerRequest<IModule, TabAreaSalesPerformanceViewModel>(nameof(TabAreaSalesPerformanceViewModel));
+            //container.PerRequest<IModule, TabPersonalSalesPerformanceViewModel>(nameof(TabPersonalSalesPerformanceViewModel));
+            //container.PerRequest<IModule, TabSalesPerformanceReportViewModel>(nameof(TabSalesPerformanceReportViewModel));
+            //container.PerRequest<IModule, TabSetDepartmentViewModel>(nameof(TabSetDepartmentViewModel));
+            //container.PerRequest<IModule, TabSetEmploymentViewModel>(nameof(TabSetEmploymentViewModel));
+            container.PerRequest<IModule, TabBomAnalysisViewModel>(nameof(TabBomAnalysisViewModel));
+            
         }
 
         protected override object GetInstance(Type service, string key)

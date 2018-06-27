@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KisManager.Config", "KisMan
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KisManager.Dal", "KisManager.Dal\KisManager.Dal.csproj", "{548AD07E-BD56-4BFD-9D69-53BF17CB99EB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityTest", "EntityTest\EntityTest.csproj", "{967C54AC-3838-4C41-A11F-191AC1D325FF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,6 +71,18 @@ Global
 		{548AD07E-BD56-4BFD-9D69-53BF17CB99EB}.Release|x64.Build.0 = Release|Any CPU
 		{548AD07E-BD56-4BFD-9D69-53BF17CB99EB}.Release|x86.ActiveCfg = Release|Any CPU
 		{548AD07E-BD56-4BFD-9D69-53BF17CB99EB}.Release|x86.Build.0 = Release|Any CPU
+		{967C54AC-3838-4C41-A11F-191AC1D325FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{967C54AC-3838-4C41-A11F-191AC1D325FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{967C54AC-3838-4C41-A11F-191AC1D325FF}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{967C54AC-3838-4C41-A11F-191AC1D325FF}.Debug|x64.Build.0 = Debug|Any CPU
+		{967C54AC-3838-4C41-A11F-191AC1D325FF}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{967C54AC-3838-4C41-A11F-191AC1D325FF}.Debug|x86.Build.0 = Debug|Any CPU
+		{967C54AC-3838-4C41-A11F-191AC1D325FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{967C54AC-3838-4C41-A11F-191AC1D325FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{967C54AC-3838-4C41-A11F-191AC1D325FF}.Release|x64.ActiveCfg = Release|Any CPU
+		{967C54AC-3838-4C41-A11F-191AC1D325FF}.Release|x64.Build.0 = Release|Any CPU
+		{967C54AC-3838-4C41-A11F-191AC1D325FF}.Release|x86.ActiveCfg = Release|Any CPU
+		{967C54AC-3838-4C41-A11F-191AC1D325FF}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
