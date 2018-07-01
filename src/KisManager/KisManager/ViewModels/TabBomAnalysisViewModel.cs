@@ -7,10 +7,13 @@ using OfficeOpenXml;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace KisManager.ViewModels
 {
@@ -138,17 +141,57 @@ namespace KisManager.ViewModels
 
         public void ExportToExcel()
         {
-            var dialog = new SaveFileDialog();
-            var path = dialog.ShowDialog();
-            if (path != null)
+            if (IcBomList != null && IcBomList.Any())
             {
-
-                using (var package = new ExcelPackage())
+                try
                 {
+                    var dialog = new SaveFileDialog();
+                    dialog.AddExtension = true;
+                    dialog.DefaultExt = "xlsx";
+                    dialog.Filter = "Excel|*.xlsx";
+                    dialog.ShowDialog();
+                    using (var file = File.Open(dialog.FileName, FileMode.OpenOrCreate))
+                    {
+                        using (var package = new ExcelPackage())
+                        {
+                            ExcelWorksheet worksheet = package.Workbook.Worksheets.Add("BOM报表");
+                            WriteData(worksheet, 0, "序号", IcBomList.Select(o => o.Index));
+                            WriteData(worksheet, 1, "BOM编号", IcBomList.Select(o => o.BomSn));
+                            WriteData(worksheet, 2, "半成品/成品编码", IcBomList.Select(o => o.BomItemSn));
+                            WriteData(worksheet, 3, "物料编号", IcBomList.Select(o => o.ItemSn));
+                            WriteData(worksheet, 4, "物料描述", IcBomList.Select(o => o.ItemDescription));
+                            WriteData(worksheet, 5, "规格", IcBomList.Select(o => o.ItemModel));
+                            WriteData(worksheet, 6, "用量", IcBomList.Select(o => o.Amount));
+                            WriteData(worksheet, 7, "库存数", IcBomList.Select(o => o.CountOfStorage));
+                            WriteData(worksheet, 8, "任务需求数", IcBomList.Select(o => o.CountOfPlan));
+                            WriteData(worksheet, 9, "数量差异", IcBomList.Select(o => o.CountOfDiff));
+                            WriteData(worksheet, 10, "在途量", IcBomList.Select(o => o.CountOfOnTheWay));
+                            WriteData(worksheet, 11, "最近交货期", IcBomList.Select(o => o.LastDeliverDate));
+                            WriteData(worksheet, 12, "供应商", IcBomList.Select(o => o.Supplier));
+                            package.SaveAs(file);
+                        }
+                    }
 
-                    ExcelWorksheet worksheet = package.Workbook.Worksheets.Add("Inventory");
+                    if (MessageBox.Show("导出成功是否打开报表？", null, MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                    {
+                        Process.Start("explorer", dialog.FileName);
+                    }
                 }
+                catch (Exception e)
+                {
+                    MessageBox.Show("操作失败：" + e.Message);
+                }
+            }
+        }
 
+        private void WriteData<T>(ExcelWorksheet worksheet, int col, string title, IEnumerable<T> enumerable)
+        {
+
+            var arr = enumerable.ToArray();
+            worksheet.Cells[1, col + 1].Value = title;
+            for (int i = 0; i < arr.Length; i++)
+            {
+                worksheet.Cells[i + 2, col + 1].Value = arr[i];
             }
         }
 
