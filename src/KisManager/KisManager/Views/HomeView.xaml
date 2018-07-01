@@ -102,7 +102,7 @@
             </StackPanel>
         </Border>
         <Border>
-            <TabControl TabStripPlacement="Bottom" SelectedItem="{Binding ActiveModule}" ItemsSource="{Binding Modules}" Controls:TabControlHelper.Underlined="TabPanel">
+            <TabControl TabStripPlacement="Bottom" Background="Transparent" SelectedItem="{Binding ActiveModule}" ItemsSource="{Binding Modules}" Controls:TabControlHelper.Underlined="TabPanel">
                 <TabControl.ItemTemplate>
                     <ItemContainerTemplate>
                         <StackPanel Orientation="Horizontal">

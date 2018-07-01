@@ -4,25 +4,61 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:KisManager.Views"
+             xmlns:control="http://metro.mahapps.com/winfx/xaml/controls"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-        <DataGrid ItemsSource="{Binding IcBomList}" AutoGenerateColumns="False" >
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="序号" Binding="{Binding Index}" />
-                <DataGridTextColumn Header="BOM层次" Binding="{Binding BomLayer}" />
-                <DataGridTextColumn Header="物料编号" Binding="{Binding ItemId}" />
-                <DataGridTextColumn Header="物料描述" Binding="{Binding ItemDescription}" />
-                <DataGridTextColumn Header="规格" Binding="{Binding ItemModel}" />
-                <DataGridTextColumn Header="用量" Binding="{Binding Amount}" />
-                <DataGridTextColumn Header="库存数" Binding="{Binding CountOfStorage}" />
-                <DataGridTextColumn Header="不良库存数" Binding="{Binding CountOfBadProduct}" />
-                <DataGridTextColumn Header="数量差异（需用量-库存数）" Binding="{Binding CountOfDiffProduct}" />
-                <DataGridTextColumn Header="在途量（已采未回）" Binding="{Binding CountOfOnTheWayProduct}" />
-                <DataGridTextColumn Header="采购周期" Binding="{Binding BuyInterval}" />
-                <DataGridTextColumn Header="供应商" Binding="{Binding Supplier}" />
-            </DataGrid.Columns>
+    <DockPanel>
+        <Border DockPanel.Dock="Top" Style="{StaticResource DefaultBorder}" Padding="2" Margin="2">
 
-        </DataGrid>
-    </Grid>
+            <StackPanel Orientation="Horizontal" >
+                <StackPanel.Resources>
+                    <Style TargetType="Label" BasedOn="{StaticResource MetroLabel}">
+                        <Setter Property="Margin" Value="2 "/>
+                    </Style>
+                    <Style TargetType="TextBox" BasedOn="{StaticResource MetroTextBox}">
+                        <Setter Property="Margin" Value="2"/>
+                    </Style>
+                    <Style TargetType="ComboBox" BasedOn="{StaticResource MetroComboBox}">
+                        <Setter Property="Margin" Value="2"/>
+                    </Style>
+                    <Style TargetType="Button" BasedOn="{StaticResource DefaultButton}">
+                        <Setter Property="Width" Value="80"/>
+                        <Setter Property="Margin" Value="2"/>
+                    </Style>
+                </StackPanel.Resources>
+                <Label>BOM编码</Label>
+                <TextBox Width="120" Text="{Binding BomNo}"></TextBox>
+                <Label>成品编码</Label>
+                <TextBox Width="120" Text="{Binding ProductNo}"></TextBox>
+                <Label>仓库</Label>
+                <ComboBox ItemsSource="{Binding StorageList}" SelectedItem="{Binding Storage}" DisplayMemberPath="FName"></ComboBox>
+                <Label>年度</Label>
+                <ComboBox ItemsSource="{Binding YearList}" SelectedValue="{Binding Year}"  DisplayMemberPath="Item1" SelectedValuePath="Item2"></ComboBox>
+                <Label>月份</Label>
+                <ComboBox ItemsSource="{Binding MonthList}" SelectedValue="{Binding Month}"  DisplayMemberPath="Item1" SelectedValuePath="Item2"></ComboBox>
+                <Button Name="Refresh">查询</Button>
+                <Button Name="ExportToExcel">导出Excel</Button>
+            </StackPanel>
+        </Border>
+        <Grid>
+            <DataGrid ItemsSource="{Binding IcBomList}" AutoGenerateColumns="False" IsReadOnly="True" CanUserAddRows="False" CanUserDeleteRows="False" >
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="序号" Binding="{Binding Index}" />
+                    <DataGridTextColumn Header="BOM编号" Binding="{Binding BomSn}" />
+                    <DataGridTextColumn Header="半成品/成品编码" Binding="{Binding BomItemSn}" />
+                    <DataGridTextColumn Header="物料编号" Binding="{Binding ItemSn}" />
+                    <DataGridTextColumn Header="物料描述" Binding="{Binding ItemDescription}" />
+                    <DataGridTextColumn Header="规格" Binding="{Binding ItemModel}" />
+                    <DataGridTextColumn Header="用量" Binding="{Binding Amount,Converter={StaticResource Round}}" />
+                    <DataGridTextColumn Header="库存数" Binding="{Binding CountOfStorage,Converter={StaticResource Round}}" />
+                    <DataGridTextColumn Header="任务需求数" Binding="{Binding CountOfPlan,Converter={StaticResource Round}}" />
+                    <DataGridTextColumn Header="数量差异" Binding="{Binding CountOfDiff,Converter={StaticResource Round}}" />
+                    <DataGridTextColumn Header="在途量" Binding="{Binding CountOfOnTheWay,Converter={StaticResource Round}}" />
+                    <DataGridTextColumn Header="最近交货期" Binding="{Binding LastDeliverDate}" />
+                    <DataGridTextColumn Header="供应商" Binding="{Binding Supplier}" />
+                </DataGrid.Columns>
+            </DataGrid>
+            <control:ProgressRing IsActive="{Binding Loading}"></control:ProgressRing>
+        </Grid>
+    </DockPanel>
 </UserControl>

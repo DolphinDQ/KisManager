@@ -17,7 +17,7 @@
                     <TextBlock Margin="4 0 0 0"  VerticalAlignment="Center" Text="{DynamicResource Home}" />
                 </StackPanel>
             </Button>
-            <Button cal:Message.Attach="Nav('ISettings')">
+            <Button cal:Message.Attach="Nav('ISettings')" Visibility="Collapsed">
                 <StackPanel Orientation="Horizontal">
                     <Rectangle Width="20" Height="20" Fill="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Foreground}">
                         <Rectangle.OpacityMask>

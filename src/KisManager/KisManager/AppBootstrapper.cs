@@ -7,6 +7,8 @@ namespace KisManager
     using KisManager.Interfaces;
     using KisManager.Common;
     using KisManager.Config;
+    using System.Linq;
+    using System.Windows;
 
     public class AppBootstrapper : BootstrapperBase, ICreator
     {
@@ -44,7 +46,23 @@ namespace KisManager
             //container.PerRequest<IModule, TabSetDepartmentViewModel>(nameof(TabSetDepartmentViewModel));
             //container.PerRequest<IModule, TabSetEmploymentViewModel>(nameof(TabSetEmploymentViewModel));
             container.PerRequest<IModule, TabBomAnalysisViewModel>(nameof(TabBomAnalysisViewModel));
-            
+            var kis = container.GetInstance<IKisLogin>();
+            try
+            {
+                if (kis.CheckLogin())
+                {
+                    using (var context = new Dal.Kis.KisContext(kis.GetConnectionString()))
+                    {
+                        context.t_ICItem.FirstOrDefault();
+                        return;
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+            Application.Shutdown();
         }
 
         protected override object GetInstance(Type service, string key)

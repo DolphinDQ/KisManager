@@ -48,7 +48,7 @@ namespace KisManager.Common
                 { }
             }
             File.WriteAllText(path, JsonConvert.SerializeObject(m_config));
-            return Task.CompletedTask;
+            return Task.FromResult(0);
         }
 
         public void Set<T>(string key, T value)

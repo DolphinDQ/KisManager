@@ -14,13 +14,18 @@ namespace KisManager.Model
         /// </summary>
         public int Index { get; set; }
         /// <summary>
-        /// Bom层次
+        /// Bom编号
         /// </summary>
-        public int BomLayer { get; set; }
+        public string BomSn { get; set; }
         /// <summary>
-        /// 物料编号
+        /// 半成品/成品编码
         /// </summary>
-        public string ItemId { get; set; }
+        public string BomItemSn { get; set; }
+        /// <summary>
+        /// 物料编码
+        /// </summary>
+        public string ItemSn { get; set; }
+     
         /// <summary>
         /// 描述
         /// </summary>
@@ -38,21 +43,21 @@ namespace KisManager.Model
         /// </summary>
         public decimal CountOfStorage { get; set; }
         /// <summary>
-        /// 不良品
+        /// 计划数量（任务需求数量）
         /// </summary>
-        public decimal CountOfBadProduct { get; set; }
+        public decimal CountOfPlan { get; set; }
         /// <summary>
-        /// 未登记
+        /// 数量差异
         /// </summary>
-        public decimal CountOfDiffProduct { get; set; }
+        public decimal CountOfDiff { get; set; }
         /// <summary>
         /// 在路上
         /// </summary>
-        public decimal CountOfOnTheWayProduct { get; set; }
+        public decimal CountOfOnTheWay { get; set; }
         /// <summary>
         /// 采购周期。
         /// </summary>
-        public DateTime? BuyInterval { get; set; }
+        public DateTime? LastDeliverDate { get; set; }
         /// <summary>
         /// 供应商。
         /// </summary>
