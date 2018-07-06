@@ -9,6 +9,7 @@ namespace KisManager
     using KisManager.Config;
     using System.Linq;
     using System.Windows;
+    using KisManager.Dal;
 
     public class AppBootstrapper : BootstrapperBase, ICreator
     {
@@ -30,12 +31,15 @@ namespace KisManager
             container.Singleton<IConfigProvider, ConfigProvider>();
 #if DEBUG
             container.Singleton<IKisLogin, KisLoginDebug>();
+            //container.Singleton<IKisLogin, KisClsLogin>();
 #else
+            //container.Singleton<IKisLogin, KisLoginDebug>();
             container.Singleton<IKisLogin, KisClsLogin>();
 #endif
             container.PerRequest<IShell, ShellViewModel>();
             container.PerRequest<IHome, HomeViewModel>();
             container.PerRequest<ISettings, SettingsViewModel>();
+            container.Singleton<IKisApi, KisWebApi>();
             container.PerRequest<DlgViewModel>();
             //container.PerRequest<DlgSalesPerformanceForCustomerViewModel>();
             //container.PerRequest<DlgSalesPerformanceEditViewModel>();
@@ -46,23 +50,7 @@ namespace KisManager
             //container.PerRequest<IModule, TabSetDepartmentViewModel>(nameof(TabSetDepartmentViewModel));
             //container.PerRequest<IModule, TabSetEmploymentViewModel>(nameof(TabSetEmploymentViewModel));
             container.PerRequest<IModule, TabBomAnalysisViewModel>(nameof(TabBomAnalysisViewModel));
-            var kis = container.GetInstance<IKisLogin>();
-            try
-            {
-                if (kis.CheckLogin())
-                {
-                    using (var context = new Dal.Kis.KisContext(kis.GetConnectionString()))
-                    {
-                        context.t_ICItem.FirstOrDefault();
-                        return;
-                    }
-                }
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show(e.Message);
-            }
-            Application.Shutdown();
+
         }
 
         protected override object GetInstance(Type service, string key)
@@ -82,7 +70,24 @@ namespace KisManager
 
         protected override void OnStartup(object sender, System.Windows.StartupEventArgs e)
         {
-            DisplayRootViewFor<IShell>();
+            var kis = container.GetInstance<IKisLogin>();
+            try
+            {
+                if (kis.CheckLogin())
+                {
+                    using (var context = new Dal.Kis.KisContext(kis.GetConnectionString()))
+                    {
+                        context.t_ICItem.FirstOrDefault();
+                        DisplayRootViewFor<IShell>();
+                        return;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            Application.Shutdown();
         }
 
         public T Create<T>(string name = null) => container.GetInstance<T>(name);

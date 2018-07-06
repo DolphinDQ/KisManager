@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KisManager.Model
+namespace KisManager.Dal.Query
 {
     public class IcBomItem
     {
@@ -25,7 +25,6 @@ namespace KisManager.Model
         /// 物料编码
         /// </summary>
         public string ItemSn { get; set; }
-     
         /// <summary>
         /// 描述
         /// </summary>

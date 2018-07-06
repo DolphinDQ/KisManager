@@ -21,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -50,6 +51,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Query\IcBomItem.cs" />
+    <Compile Include="Query\IcBomReportQuery.cs" />
+    <Compile Include="IKisApi.cs" />
     <Compile Include="Kis\ICBOM.cs" />
     <Compile Include="Kis\ICBOMChild.cs" />
     <Compile Include="Kis\ICInvBal.cs" />
@@ -62,6 +66,8 @@
     <Compile Include="Kis\t_ICItem.cs" />
     <Compile Include="Kis\t_Stock.cs" />
     <Compile Include="Kis\t_Supplier.cs" />
+    <Compile Include="Query\Paged`1.cs" />
+    <Compile Include="Query\Pagin`1.cs" />
     <Compile Include="Sale\ModelBase.cs" />
     <Compile Include="Sale\SalesPerformance.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

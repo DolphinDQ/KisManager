@@ -8,7 +8,14 @@ namespace KisTest
 
         static void Main(string[] args)
         {
-            PrintKisInfo();
+            try
+            {
+                PrintKisInfo();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
             Console.Read();
         }
 

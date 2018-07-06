@@ -1,5 +1,7 @@
 ﻿using Caliburn.Micro;
+using KisManager.Dal;
 using KisManager.Dal.Kis;
+using KisManager.Dal.Query;
 using KisManager.Interfaces;
 using KisManager.Model;
 using Microsoft.Win32;
@@ -77,66 +79,9 @@ namespace KisManager.ViewModels
         private async void OnSearch()
         {
             Loading = true;
-            var aa = await Task.Factory.StartNew(() =>
-             {
-                 var allStorage = Storage.FItemID == ALL_ID;
-                 var allStorageId = StorageList.Select(o => o.FItemID).ToArray();
-
-                 var baseModel = Context.ICBOMChild.Select(i =>
-                 new
-                 {
-                     Bom = Context.ICBOM.FirstOrDefault(o => o.FInterID == i.FInterID),
-                     Child = i,
-                     BomItem = Context.t_ICItem.FirstOrDefault(o => o.FItemID == Context.ICBOM.FirstOrDefault(p => p.FInterID == i.FInterID).FItemID),
-                     ChildItem = Context.t_ICItem.FirstOrDefault(o => o.FItemID == i.FItemID),
-                     Storage = (decimal?)Context.ICInvBal.Where(o =>
-                                 o.FItemID == i.FItemID
-                                 && (Year == null || o.FYear == Year)
-                                 && (Month == null || o.FPeriod == Month)
-                                 && (allStorage ? (allStorageId.Any(p => p == o.FStockID)) : (o.FStockID == Storage.FItemID))
-                                 ).Sum(o => o.FEndBal),
-                     Plan = (decimal?)Context.PPBOMEntry
-                                     .Join(Context.PPBOM, o => o.FInterID, o => o.FInterID, (a, b) => new { Entry = a, PP = b })
-                                     .Where(o => o.Entry.FItemID == i.FItemID && o.PP.FStatus == 1 && (o.Entry.FAuxQtyPick != o.Entry.FAuxStockQty))
-                                     .Sum(o => o.Entry.FAuxQty),
-                     OnTheWay = (decimal?)Context.POOrderEntry.Where(o => o.FItemID == i.FItemID && Context.POOrder.Any(p => p.FInterID == o.FInterID && p.FStatus == 1)).Sum(o => o.FQty),
-                     LastDeliverDate = (DateTime?)Context.POOrderEntry.Where(o => Context.POOrder.Any(p => p.FInterID == o.FInterID && p.FStatus == 1) && o.FItemID == i.FItemID).Max(o => o.FDate),
-                     Order = Context.POOrder.FirstOrDefault(o => o.FStatus == 1 && Context.POOrderEntry.Any(p => p.FItemID == i.FItemID && p.FInterID == o.FInterID))
-                 });
-                 IEnumerable<IcBomItem> tmp = baseModel.Select(o => new IcBomItem
-                 {
-                     BomSn = o.Bom.FBOMNumber,
-                     BomItemSn = o.BomItem.FNumber,
-                     ItemSn = o.ChildItem.FNumber,
-                     ItemDescription = o.ChildItem.FName,
-                     ItemModel = o.ChildItem.FModel,
-                     Amount = o.Child.FQty,
-                     CountOfStorage = o.Storage == null ? 0 : o.Storage.Value,
-                     CountOfPlan = o.Plan == null ? 0 : o.Plan.Value,
-                     CountOfOnTheWay = o.OnTheWay == null ? 0 : o.OnTheWay.Value,
-                     LastDeliverDate = o.LastDeliverDate,
-                     Supplier = o.Order == null ? null : Context.t_Supplier.FirstOrDefault(i => i.FItemID == o.Order.FSupplyID).FName
-                 });
-
-                 if (!string.IsNullOrWhiteSpace(BomNo))
-                 {
-                     tmp = tmp.Where(o => !string.IsNullOrEmpty(o.BomSn) && o.BomSn.Contains(BomNo));
-                 }
-                 if (!string.IsNullOrWhiteSpace(ProductNo))
-                 {
-                     tmp = tmp.Where(o => !string.IsNullOrEmpty(o.ItemSn) && o.ItemSn.Contains(ProductNo));
-                 }
-                 tmp = tmp.ToArray();
-                 tmp.Aggregate(0, (i, o) =>
-                 {
-                     o.CountOfDiff = o.CountOfStorage - o.CountOfPlan;
-                     var index = o.Index = ++i;
-                     return index;
-                 });
-                 return tmp;
-             });
+           
             Loading = false;
-            IcBomList = aa;
+            //IcBomList = aa;
         }
 
         public void ExportToExcel()

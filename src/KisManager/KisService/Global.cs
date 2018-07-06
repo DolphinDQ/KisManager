@@ -1,13 +1,12 @@
-﻿using Caliburn.Micro;
-using KisManager.Interfaces;
-using KisManager.ViewModels;
+﻿using KisManager;
+using KisManager.Dal.Query;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KisManager
+namespace KisService
 {
     public static class Global
     {
@@ -35,17 +34,16 @@ namespace KisManager
             return null;
         }
 
-        public static object CreateDialog<T>(this ICreator creator, Action<T> setting = null)
-           where T : IScreen
+        public static Paged<T> QueryPaging<T, C>(this IQueryable<T> ts, Pagin<C> pagin, Func<IQueryable<T>, C, IQueryable<T>> filter)
+            where C : class, new()
         {
-            var dlg = creator.Create<DlgViewModel>();
-            var content = creator.Create<T>();
-            setting?.Invoke(content);
-            dlg.Content = content;
-            return dlg;
+            pagin.Condition = pagin.Condition ?? new C();
+            var items = filter(ts, pagin.Condition);
+            return new Paged<T>()
+            {
+                Data = items.Skip(pagin.Page).Take(pagin.Size).ToArray(),
+                Total = items.Count(),
+            };
         }
-
-        public static string Get(this IConfigProvider config, string key) => config.Get<string>(key);
-
     }
 }
