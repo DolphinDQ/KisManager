@@ -103,6 +103,9 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
+    <None Include="run.bat">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\KisManager.Config\KisManager.Config.csproj">
@@ -113,6 +116,9 @@
       <Project>{548ad07e-bd56-4bfd-9d69-53bf17cb99eb}</Project>
       <Name>KisManager.Dal</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="部署说明.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
