@@ -25,30 +25,51 @@ namespace KisManager.ViewModels
         private const int MIN_YEAR = 2012;
 
         private IResourceProvider m_resource;
+        private IWebApi m_api;
 
         public TabBomAnalysisViewModel(IKisLogin login,
+            IWebApi api,
             IEventAggregator eventAggregator,
             IResourceProvider resource) : base(login, eventAggregator)
         {
             m_resource = resource;
+            m_api = api;
             DisplayName = resource.GetText("BomAnalysis");
+            Pagin = new Pagin<IcBomReportQuery>()
+            {
+                Condition = new IcBomReportQuery()
+                {
+                    Year = 2018,
+                    Month = 1,
+                },
+                Page = 0,
+                Size = 50
+            };
         }
 
-        public IEnumerable<IcBomItem> IcBomList { get; set; }
         public IEnumerable<Tuple<string, int?>> YearList { get; set; }
         public IEnumerable<Tuple<string, short?>> MonthList { get; set; }
-        public IEnumerable<t_Stock> StorageList { get; set; }
-        public t_Stock Storage { get; set; }
-        public int? Year { get; set; } = 2016;
-        public short? Month { get; set; } = 1;
-        public string BomNo { get; set; }
-        public string ProductNo { get; set; }
+        public IEnumerable<Tuple<string, int?>> StorageList { get; set; }
+        public Paged<IcBomItem> Paged { get; set; }
+        public Pagin<IcBomReportQuery> Pagin { get; set; }
 
-        protected override void OnContextLoad()
+        public IcBomReportQuery Condition => Pagin?.Condition;
+
+        protected override async void OnViewAttached(object view, object context)
         {
-            base.OnContextLoad();
-            StorageList = new[] { new t_Stock() { FName = "<全部>", FItemID = ALL_ID } }.Concat(Context.t_Stock.Where(o => o.FName != null && !o.FName.Contains("不良")));
-            Storage = StorageList.First();
+            base.OnViewAttached(view, context);
+            var storage = new List<Tuple<string, int?>>();
+            storage.Add(Tuple.Create("<全部>", (int?)null));
+            try
+            {
+                storage.AddRange((await m_api.GetIcAsync<IEnumerable<t_Stock>>(o => nameof(o.GetStockes))).Where(o => o.FName != null && !o.FName.Contains("不良")).Select(o => Tuple.Create(o.FName, (int?)o.FItemID)));
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("获取仓库列表失败:{0}", e.Message);
+            }
+            //StorageList = new[] { new t_Stock() { FName = "<全部>", FItemID = ALL_ID } }.Concat(Context.t_Stock.Where(o => o.FName != null && !o.FName.Contains("不良")));
+            StorageList = storage;
             var year = new List<Tuple<string, int?>>();
             var y = MIN_YEAR;
             var t = DateTime.Today.Year;
@@ -68,6 +89,8 @@ namespace KisManager.ViewModels
             MonthList = month;
         }
 
+       
+        public int PagedTotal { get; set; }
 
 
         public override void Refresh()
@@ -79,13 +102,22 @@ namespace KisManager.ViewModels
         private async void OnSearch()
         {
             Loading = true;
-           
+            try
+            {
+                Paged = await m_api.PostIcAsync<Paged<IcBomItem>>(o => nameof(o.QueryIcBomReport), null, Pagin);
+                PagedTotal = Paged.Total;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("错误：{0}", e.Message);
+            }
             Loading = false;
             //IcBomList = aa;
         }
 
         public void ExportToExcel()
         {
+            var IcBomList = Paged?.Data;
             if (IcBomList != null && IcBomList.Any())
             {
                 try

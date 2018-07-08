@@ -11,7 +11,7 @@ using System.Web.Http.Results;
 
 namespace KisService.Controllers
 {
-    public class IcController : ApiController, IKisApi
+    public class IcController : ApiController, IKisIcApi
     {
         public KisContext Context { get; }
         public IcController(KisContext kisContext)

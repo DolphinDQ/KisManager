@@ -41,7 +41,7 @@ namespace KisService
             var items = filter(ts, pagin.Condition);
             return new Paged<T>()
             {
-                Data = items.Skip(pagin.Page).Take(pagin.Size).ToArray(),
+                Data = items.Skip(pagin.Page * pagin.Size).Take(pagin.Size).ToArray(),
                 Total = items.Count(),
             };
         }

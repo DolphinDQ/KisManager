@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace KisManager.Dal
 {
-    public interface IKisApi
+    public interface IKisIcApi
     {
         IEnumerable<t_Stock> GetStockes();
         Paged<IcBomItem> QueryIcBomReport(Pagin<IcBomReportQuery> pagin);

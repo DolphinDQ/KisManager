@@ -26,7 +26,7 @@ namespace KisService
 #endif
             Console.WriteLine("loading kis lib....");
             if (!Kis.CheckLogin()) return;
-            var ip = args?.FirstOrDefault() ?? "http://localhost:8888/";
+            var ip = args?.FirstOrDefault() ?? "http://127.0.0.1:8888/";
             using (var context = new KisContext(Kis.GetConnectionString()))
             {
                 Console.Write("try connect kis db...");

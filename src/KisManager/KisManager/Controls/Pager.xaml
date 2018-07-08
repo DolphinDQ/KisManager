@@ -1,0 +1,52 @@
+﻿<UserControl x:Class="KisManager.Controls.Pager"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:KisManager.Controls"
+             xmlns:control="http://metro.mahapps.com/winfx/xaml/controls"
+             xmlns:icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
+             mc:Ignorable="d" 
+             d:DesignHeight="30" d:DesignWidth="800">
+    <StackPanel Orientation="Horizontal"  Name="Container" DataContext="{x:Type local:Pager}">
+        <StackPanel.Resources>
+            <!--<Style TargetType="Button">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>-->
+            <ResourceDictionary >
+                <local:PageConverter x:Key="PageConverter"  />
+                <local:IntConverter x:Key="IntConverter"  />
+            </ResourceDictionary>
+        </StackPanel.Resources>
+
+        <StackPanel Orientation="Horizontal" Margin="2">
+            <Label>页码</Label>
+            <TextBox  Text="{Binding Page,Converter={StaticResource PageConverter}}"></TextBox>
+            <Label>/</Label>
+            <TextBox  Text="{Binding TotalPage,Converter={StaticResource IntConverter}}" IsReadOnly="True"></TextBox>
+            <Label>条目</Label>
+            <control:NumericUpDown Minimum="10" Maximum="100" Interval="10"  Value="{Binding Size}"></control:NumericUpDown>
+        </StackPanel>
+        <Button Name="ToFirst" Click="ToFirst_Click">
+            <icon:FontAwesome Kind="AngleDoubleLeftSolid"/>
+        </Button>
+        <Button Name="Previous" Click="Previous_Click">
+            <icon:FontAwesome Kind="AngleLeftSolid"/>
+        </Button>
+        <Button Name="Reload" Click="Reload_Click">
+            <icon:FontAwesome Kind="SyncAltSolid"/>
+        </Button>
+        <Button Name="Next" Click="Next_Click">
+            <icon:FontAwesome Kind="AngleRightSolid"/>
+        </Button>
+        <Button Name="ToLast" Click="ToLast_Click">
+            <icon:FontAwesome Kind="AngleDoubleRightSolid"/>
+        </Button>
+    </StackPanel>
+</UserControl>

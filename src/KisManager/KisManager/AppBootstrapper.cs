@@ -39,7 +39,7 @@ namespace KisManager
             container.PerRequest<IShell, ShellViewModel>();
             container.PerRequest<IHome, HomeViewModel>();
             container.PerRequest<ISettings, SettingsViewModel>();
-            container.Singleton<IKisApi, KisWebApi>();
+            container.Singleton<IWebApi, KisWebApiClient>();
             container.PerRequest<DlgViewModel>();
             //container.PerRequest<DlgSalesPerformanceForCustomerViewModel>();
             //container.PerRequest<DlgSalesPerformanceEditViewModel>();
@@ -70,24 +70,24 @@ namespace KisManager
 
         protected override void OnStartup(object sender, System.Windows.StartupEventArgs e)
         {
-            var kis = container.GetInstance<IKisLogin>();
-            try
-            {
-                if (kis.CheckLogin())
-                {
-                    using (var context = new Dal.Kis.KisContext(kis.GetConnectionString()))
-                    {
-                        context.t_ICItem.FirstOrDefault();
-                        DisplayRootViewFor<IShell>();
-                        return;
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            Application.Shutdown();
+            DisplayRootViewFor<IShell>();
+            //var kis = container.GetInstance<IKisLogin>();
+            //try
+            //{
+            //    if (kis.CheckLogin())
+            //    {
+            //        using (var context = new Dal.Kis.KisContext(kis.GetConnectionString()))
+            //        {
+            //            context.t_ICItem.FirstOrDefault();
+            //            return;
+            //        }
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message);
+            //}
+            //Application.Shutdown();
         }
 
         public T Create<T>(string name = null) => container.GetInstance<T>(name);

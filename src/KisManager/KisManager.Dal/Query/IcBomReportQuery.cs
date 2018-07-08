@@ -4,7 +4,7 @@
     {
         public int? Year { get; set; }
 
-        public int? Month { get; set; }
+        public short? Month { get; set; }
 
         public int? StockId { get; set; }
 

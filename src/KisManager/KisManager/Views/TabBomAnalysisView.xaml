@@ -4,12 +4,13 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:KisManager.Views"
+             xmlns:ctrl="clr-namespace:KisManager.Controls"
+             xmlns:cal="http://www.caliburnproject.org"
              xmlns:control="http://metro.mahapps.com/winfx/xaml/controls"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <DockPanel>
         <Border DockPanel.Dock="Top" Style="{StaticResource DefaultBorder}" Padding="2" Margin="2">
-
             <StackPanel Orientation="Horizontal" >
                 <StackPanel.Resources>
                     <Style TargetType="Label" BasedOn="{StaticResource MetroLabel}">
@@ -31,33 +32,36 @@
                 <Label>成品编码</Label>
                 <TextBox Width="120" Text="{Binding ProductNo}"></TextBox>
                 <Label>仓库</Label>
-                <ComboBox ItemsSource="{Binding StorageList}" SelectedItem="{Binding Storage}" DisplayMemberPath="FName"></ComboBox>
+                <ComboBox ItemsSource="{Binding StorageList}" SelectedValue="{Binding Condition.StockId}" DisplayMemberPath="Item1" SelectedValuePath="Item2"></ComboBox>
                 <Label>年度</Label>
-                <ComboBox ItemsSource="{Binding YearList}" SelectedValue="{Binding Year}"  DisplayMemberPath="Item1" SelectedValuePath="Item2"></ComboBox>
+                <ComboBox ItemsSource="{Binding YearList}" SelectedValue="{Binding Condition.Year}"  DisplayMemberPath="Item1" SelectedValuePath="Item2"></ComboBox>
                 <Label>月份</Label>
-                <ComboBox ItemsSource="{Binding MonthList}" SelectedValue="{Binding Month}"  DisplayMemberPath="Item1" SelectedValuePath="Item2"></ComboBox>
+                <ComboBox ItemsSource="{Binding MonthList}" SelectedValue="{Binding Condition.Month}"  DisplayMemberPath="Item1" SelectedValuePath="Item2"></ComboBox>
                 <Button Name="Refresh">查询</Button>
                 <Button Name="ExportToExcel">导出Excel</Button>
             </StackPanel>
         </Border>
         <Grid>
-            <DataGrid ItemsSource="{Binding IcBomList}" AutoGenerateColumns="False" IsReadOnly="True" CanUserAddRows="False" CanUserDeleteRows="False" >
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="序号" Binding="{Binding Index}" />
-                    <DataGridTextColumn Header="BOM编号" Binding="{Binding BomSn}" />
-                    <DataGridTextColumn Header="半成品/成品编码" Binding="{Binding BomItemSn}" />
-                    <DataGridTextColumn Header="物料编号" Binding="{Binding ItemSn}" />
-                    <DataGridTextColumn Header="物料描述" Binding="{Binding ItemDescription}" />
-                    <DataGridTextColumn Header="规格" Binding="{Binding ItemModel}" />
-                    <DataGridTextColumn Header="用量" Binding="{Binding Amount,Converter={StaticResource Round}}" />
-                    <DataGridTextColumn Header="库存数" Binding="{Binding CountOfStorage,Converter={StaticResource Round}}" />
-                    <DataGridTextColumn Header="任务需求数" Binding="{Binding CountOfPlan,Converter={StaticResource Round}}" />
-                    <DataGridTextColumn Header="数量差异" Binding="{Binding CountOfDiff,Converter={StaticResource Round}}" />
-                    <DataGridTextColumn Header="在途量" Binding="{Binding CountOfOnTheWay,Converter={StaticResource Round}}" />
-                    <DataGridTextColumn Header="最近交货期" Binding="{Binding LastDeliverDate}" />
-                    <DataGridTextColumn Header="供应商" Binding="{Binding Supplier}" />
-                </DataGrid.Columns>
-            </DataGrid>
+            <DockPanel>
+                <ctrl:Pager  DockPanel.Dock="Bottom" Page="{Binding Pagin.Page,Mode=TwoWay}" Total="{Binding PagedTotal,Mode=TwoWay}" Size="{Binding Pagin.Size}" cal:Message.Attach="[Event ReloadPage]=[Action Refresh]" ></ctrl:Pager>
+                <DataGrid ItemsSource="{Binding Paged.Data}" AutoGenerateColumns="False" IsReadOnly="True" CanUserAddRows="False" CanUserDeleteRows="False" >
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="序号" Binding="{Binding Index}" />
+                        <DataGridTextColumn Header="BOM编号" Binding="{Binding BomSn}" />
+                        <DataGridTextColumn Header="半成品/成品编码" Binding="{Binding BomItemSn}" />
+                        <DataGridTextColumn Header="物料编号" Binding="{Binding ItemSn}" />
+                        <DataGridTextColumn Header="物料描述" Binding="{Binding ItemDescription}" />
+                        <DataGridTextColumn Header="规格" Binding="{Binding ItemModel}" />
+                        <DataGridTextColumn Header="用量" Binding="{Binding Amount,Converter={StaticResource Round}}" />
+                        <DataGridTextColumn Header="库存数" Binding="{Binding CountOfStorage,Converter={StaticResource Round}}" />
+                        <DataGridTextColumn Header="任务需求数" Binding="{Binding CountOfPlan,Converter={StaticResource Round}}" />
+                        <DataGridTextColumn Header="数量差异" Binding="{Binding CountOfDiff,Converter={StaticResource Round}}" />
+                        <DataGridTextColumn Header="在途量" Binding="{Binding CountOfOnTheWay,Converter={StaticResource Round}}" />
+                        <DataGridTextColumn Header="最近交货期" Binding="{Binding LastDeliverDate}" />
+                        <DataGridTextColumn Header="供应商" Binding="{Binding Supplier}" />
+                    </DataGrid.Columns>
+                </DataGrid>
+            </DockPanel>
             <control:ProgressRing IsActive="{Binding Loading}"></control:ProgressRing>
         </Grid>
     </DockPanel>

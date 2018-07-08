@@ -53,7 +53,7 @@
   <ItemGroup>
     <Compile Include="Query\IcBomItem.cs" />
     <Compile Include="Query\IcBomReportQuery.cs" />
-    <Compile Include="IKisApi.cs" />
+    <Compile Include="IKisIcApi.cs" />
     <Compile Include="Kis\ICBOM.cs" />
     <Compile Include="Kis\ICBOMChild.cs" />
     <Compile Include="Kis\ICInvBal.cs" />

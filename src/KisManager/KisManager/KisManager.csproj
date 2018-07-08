@@ -94,6 +94,7 @@
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.6\lib\net45\System.Net.Http.Formatting.dll</HintPath>
     </Reference>
     <Reference Include="System.Security" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Caliburn.Micro.3.2.0\lib\net45\System.Windows.Interactivity.dll</HintPath>
     </Reference>
@@ -117,7 +118,7 @@
     </ApplicationDefinition>
     <Compile Include="AppBootstrapper.cs" />
     <Compile Include="Common\ConfigProvider.cs" />
-    <Compile Include="Common\KisWebApi.cs" />
+    <Compile Include="Common\KisWebApiClient.cs" />
     <Compile Include="ConfigGlobal.cs" />
     <Compile Include="Controls\DataGridBehaviour.cs" />
     <Compile Include="Controls\DataGridMergeColumn.cs" />
@@ -126,9 +127,15 @@
     <Compile Include="Controls\HiddenIfFalseConverter.cs" />
     <Compile Include="Controls\HiddenIfNullConverter.cs" />
     <Compile Include="Common\ResourceProvider.cs" />
+    <Compile Include="Controls\IntConverter.cs" />
+    <Compile Include="Controls\PageConverter.cs" />
+    <Compile Include="Controls\Pager.xaml.cs">
+      <DependentUpon>Pager.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\RoundConverter.cs" />
     <Compile Include="EventArgs\EvtTabClose.cs" />
     <Compile Include="Global.cs" />
+    <Compile Include="Interfaces\IWebApi.cs" />
     <Compile Include="Interfaces\ICreator.cs" />
     <Compile Include="Interfaces\IDialogContent.cs" />
     <Compile Include="Interfaces\IDialogProvider.cs" />
@@ -161,6 +168,10 @@
     <Compile Include="Views\TabBomAnalysisView.xaml.cs">
       <DependentUpon>TabBomAnalysisView.xaml</DependentUpon>
     </Compile>
+    <Page Include="Controls\Pager.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Resources\Colors.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
