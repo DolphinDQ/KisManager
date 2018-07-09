@@ -13,6 +13,7 @@ namespace KisManager
 
         public static string GetApiUrl(this IConfigProvider provider)
         {
+            provider.Load().Wait();
             var url = provider.Get(KEY_API_URL);
             if (url == null)
             {
