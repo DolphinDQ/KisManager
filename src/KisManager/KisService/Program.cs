@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
+using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
@@ -35,6 +36,25 @@ namespace KisService
             using (WebApp.Start<Startup>(ip))
             {
                 Console.WriteLine("start service at {1} {0}", ip, Kis.AcctName);
+                try
+                {
+                    Console.WriteLine("checking service...");
+                    var client = new HttpClient();
+                    client.BaseAddress = new Uri(ip);
+                    var resp = client.GetAsync("api/ic/GetStockes").Result;
+                    if (resp.IsSuccessStatusCode)
+                    {
+                        Console.WriteLine("web api service...done.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("failed...{0}", resp.StatusCode);
+                    }
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                }
                 Console.ReadLine();
             }
         }
