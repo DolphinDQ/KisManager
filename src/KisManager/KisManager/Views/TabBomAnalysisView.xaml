@@ -28,9 +28,9 @@
                     </Style>
                 </StackPanel.Resources>
                 <Label>BOM编码</Label>
-                <TextBox Width="120" Text="{Binding BomNo}"></TextBox>
+                <TextBox Width="120" Text="{Binding Condition.BomNo}"></TextBox>
                 <Label>成品编码</Label>
-                <TextBox Width="120" Text="{Binding ProductNo}"></TextBox>
+                <TextBox Width="120" Text="{Binding Condition.ProductNo}"></TextBox>
                 <Label>仓库</Label>
                 <ComboBox ItemsSource="{Binding StorageList}" SelectedValue="{Binding Condition.StockId}" DisplayMemberPath="Item1" SelectedValuePath="Item2"></ComboBox>
                 <Label>年度</Label>
