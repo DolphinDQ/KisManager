@@ -2,6 +2,8 @@
 using KisManager.Dal.Query;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -45,5 +47,30 @@ namespace KisService
                 Total = items.Count(),
             };
         }
+
+        public static Paged<T> QueryPaging<T>(this Database db, string sql, Pagin pagin, params SqlParameter[] parameters)
+        {
+            var a = $@"select count(*) from ({sql}) x";
+            var total = db.SqlQuery<int>(a, parameters.ToArray()).FirstOrDefault();
+            sql = $@"
+                select * from ({sql})  t where t.pageIndex between @p_begin and @p_end
+                ";
+            var param = new List<SqlParameter>()
+            {
+                new SqlParameter("p_begin", pagin.Page * pagin.Size + 1),
+                new SqlParameter("p_end", pagin.Page * pagin.Size + pagin.Size)
+            };
+            foreach (var item in parameters)
+            {
+                param.Add(new SqlParameter(item.ParameterName, item.Value));
+            }
+            var data = db.SqlQuery<T>(sql, param.ToArray()).ToArray();
+            return new Paged<T>
+            {
+                Total = total,
+                Data = data
+            };
+        }
+
     }
 }

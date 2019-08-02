@@ -1,43 +1,40 @@
 ﻿using Caliburn.Micro;
-using KisManager.Dal;
 using KisManager.Dal.Kis;
 using KisManager.Dal.Query;
 using KisManager.Interfaces;
-using KisManager.Model;
 using Microsoft.Win32;
 using OfficeOpenXml;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
 namespace KisManager.ViewModels
 {
-    class TabBomAnalysisViewModel : TabModulsBase
+    class TabItemAnalysisViewModel : TabModulsBase
     {
+
         private const int ALL_ID = -1;
         private const int MIN_YEAR = 2012;
 
         private IResourceProvider m_resource;
         private IWebApi m_api;
 
-        public TabBomAnalysisViewModel(IKisLogin login,
+        public TabItemAnalysisViewModel(IKisLogin login,
             IWebApi api,
             IEventAggregator eventAggregator,
             IResourceProvider resource) : base(login, eventAggregator)
         {
             m_resource = resource;
             m_api = api;
-            DisplayName = resource.GetText("BomAnalysis");
-            Pagin = new Pagin<IcBomReportQuery>()
+            DisplayName = resource.GetText("ItemAnalysis");
+            Pagin = new Pagin<IcItemUsageQuery>()
             {
-                Condition = new IcBomReportQuery()
+                Condition = new IcItemUsageQuery()
                 {
                     Year = 2018,
                     Month = 1,
@@ -50,10 +47,10 @@ namespace KisManager.ViewModels
         public IEnumerable<Tuple<string, int?>> YearList { get; set; }
         public IEnumerable<Tuple<string, short?>> MonthList { get; set; }
         public IEnumerable<Tuple<string, int?>> StorageList { get; set; }
-        public Paged<IcBomItem> Paged { get; set; }
-        public Pagin<IcBomReportQuery> Pagin { get; set; }
+        public Paged<IcItemUsage> Paged { get; set; }
+        public Pagin<IcItemUsageQuery> Pagin { get; set; }
 
-        public IcBomReportQuery Condition => Pagin?.Condition;
+        public IcItemUsageQuery Condition => Pagin?.Condition;
 
         protected override async void OnViewAttached(object view, object context)
         {
@@ -101,10 +98,15 @@ namespace KisManager.ViewModels
 
         private async void OnSearch()
         {
+            if (string.IsNullOrWhiteSpace( Pagin.Condition.ItemNo))
+            {
+                MessageBox.Show("请输入物料编号");
+                return;
+            }
             Loading = true;
             try
             {
-                Paged = await m_api.PostIcAsync<Paged<IcBomItem>>(o => nameof(o.QueryIcBomReport), null, Pagin);
+                Paged = await m_api.PostIcAsync<Paged<IcItemUsage>>(o => nameof(o.QueryItemUsage), null, Pagin);
                 PagedTotal = Paged.Total;
             }
             catch (Exception e)
@@ -133,18 +135,17 @@ namespace KisManager.ViewModels
                         {
                             ExcelWorksheet worksheet = package.Workbook.Worksheets.Add("BOM报表");
                             WriteData(worksheet, 0, "序号", IcBomList.Select(o => o.Index));
-                            WriteData(worksheet, 1, "BOM编号", IcBomList.Select(o => o.BomSn));
-                            WriteData(worksheet, 2, "半成品/成品编码", IcBomList.Select(o => o.BomItemSn));
-                            WriteData(worksheet, 3, "物料编号", IcBomList.Select(o => o.ItemSn));
-                            WriteData(worksheet, 4, "物料描述", IcBomList.Select(o => o.ItemDescription));
-                            WriteData(worksheet, 5, "规格", IcBomList.Select(o => o.ItemModel));
-                            WriteData(worksheet, 6, "用量", IcBomList.Select(o => o.Amount));
-                            WriteData(worksheet, 7, "库存数", IcBomList.Select(o => o.CountOfStorage));
-                            WriteData(worksheet, 8, "任务需求数", IcBomList.Select(o => o.CountOfPlan));
-                            WriteData(worksheet, 9, "数量差异", IcBomList.Select(o => o.CountOfDiff));
-                            WriteData(worksheet, 10, "在途量", IcBomList.Select(o => o.CountOfOnTheWay));
-                            WriteData(worksheet, 11, "最近交货期", IcBomList.Select(o => o.LastDeliverDate));
-                            WriteData(worksheet, 12, "供应商", IcBomList.Select(o => o.Supplier));
+                            WriteData(worksheet, 1, "物料编号", IcBomList.Select(o => o.ItemSn));
+                            WriteData(worksheet, 2, "物料描述", IcBomList.Select(o => o.ItemDescription));
+                            WriteData(worksheet, 3, "规格", IcBomList.Select(o => o.ItemModel));
+                            WriteData(worksheet, 4, "单位用量", IcBomList.Select(o => o.Unit));
+                            WriteData(worksheet, 5, "需用量", IcBomList.Select(o => o.Amount));
+                            WriteData(worksheet, 6, "库存数", IcBomList.Select(o => o.CountOfStorage));
+                            WriteData(worksheet, 7, "任务需求数", IcBomList.Select(o => o.CountOfPlan));
+                            WriteData(worksheet, 8, "数量差异", IcBomList.Select(o => o.CountOfDiff));
+                            WriteData(worksheet, 9, "在途量", IcBomList.Select(o => o.CountOfOnTheWay));
+                            WriteData(worksheet, 10, "最近交货期", IcBomList.Select(o => o.LastDeliverDate));
+                            WriteData(worksheet, 11, "供应商", IcBomList.Select(o => o.Supplier));
                             package.SaveAs(file);
                         }
                     }
@@ -171,58 +172,5 @@ namespace KisManager.ViewModels
                 worksheet.Cells[i + 2, col + 1].Value = arr[i];
             }
         }
-
-
-
-        //private void Search()
-        //{
-
-        //    var baseModel = Context.ICBOM
-        //         .Select(o => new IcBomItemModel { Count = o.FQty, ItemId = o.FItemID, IsSemiFinished = false })
-        //         .Concat(Context.ICBOMChild
-        //         .Select(o => new IcBomItemModel { Count = o.FQty, ItemId = o.FItemID, IsSemiFinished = true }))
-        //         ;
-        //    var onTheWay = Context.POOrder.Where(o => o.FStatus == 1).Select(o => o.FInterID);
-
-        //    var b = baseModel.Select(o => new
-        //    {
-        //        Model = o,
-        //        Item = Context.t_ICItem.FirstOrDefault(i => i.FItemID == o.ItemId),
-        //        Storage = (decimal?)Context.ICInvBal
-        //                    .Where(i => i.FItemID == o.ItemId
-        //                            && i.FYear == Year
-        //                            && i.FPeriod == Month
-        //                            && i.FStockID == Storage.FItemID).Sum(i => i.FEndBal),
-        //        Plan = (decimal?)(o.IsSemiFinished ?
-        //               Context.PPBOMEntry.Where(i => i.FItemID == o.ItemId).Sum(i => i.FAuxQty) :
-        //               Context.PPBOM.Where(i => i.FItemID == o.ItemId).Sum(i => i.FAuxQty)),
-        //        OnTheWay = (decimal?)Context.POOrderEntry
-        //                    .Where(i => onTheWay.Contains(i.FInterID) && i.FItemID == o.ItemId)
-        //                    .Sum(i => i.FQty),
-        //        OrderDate = (DateTime?)Context.POOrderEntry
-        //                    .Where(i => onTheWay.Contains(i.FInterID) && i.FItemID == o.ItemId && i.FDate != null)
-        //                    .Max(i => i.FDate),
-        //        SupplierId = Context.POOrder.FirstOrDefault(i =>
-        //                            Context.POOrderEntry
-        //                                    .Where(p => p.FItemID == o.ItemId)
-        //                                    .Select(p => p.FInterID)
-        //                                    .Contains(i.FInterID)
-        //                            && i.FStatus == 1)
-        //    });
-        //    IcBomList = b.Select(o => new IcBomItem()
-        //    {
-        //        ItemSn = o.Item.FNumber,
-        //        ItemDescription = o.Item.FFullName,
-        //        ItemModel = o.Item.FModel,
-        //        Amount = o.Model.Count,
-        //        CountOfStorage = o.Storage ?? 0,
-        //        CountOfDiff = o.Storage ?? 0 - o.Plan ?? 0,
-        //        CountOfOnTheWay = o.OnTheWay ?? 0,
-        //        LastDeliverDate = o.OrderDate,
-        //        Supplier = Context.t_Supplier.FirstOrDefault(i => i.FItemID == o.SupplierId.FSupplyID).FName,
-
-        //    }).Take(1000).ToArray();
-        //}
-
     }
 }

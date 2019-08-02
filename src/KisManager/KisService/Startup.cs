@@ -13,6 +13,8 @@ using System.Web.Http;
 using Autofac.Integration.WebApi;
 using System.Web.Http.Dependencies;
 using System.Reflection;
+using KisManager.Sql;
+using KisService.Core;
 
 namespace KisService
 {
@@ -40,14 +42,17 @@ namespace KisService
             config.DependencyResolver = new AutofacWebApiDependencyResolver(container);
             appBuilder.UseAutofacMiddleware(container);
             appBuilder.UseWebApi(config);
+            container.Resolve<DbConfig>().Init();
 
         }
 
         private void OnRegisterObjects(ContainerBuilder builder)
         {
             builder.Register(o => new KisContext(Program.Kis.GetConnectionString())).SingleInstance();
+            builder.RegisterType<SqlProvider>().As<ISqlProvider>();
+            builder.RegisterType<DbConfig>().SingleInstance();
         }
     }
 
-    
+
 }

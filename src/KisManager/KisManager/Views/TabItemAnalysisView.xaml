@@ -1,10 +1,10 @@
-﻿<UserControl x:Class="KisManager.Views.TabBomAnalysisView"
+﻿<UserControl x:Class="KisManager.Views.TabItemAnalysisView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:KisManager.Views"
-             xmlns:ctrl="clr-namespace:KisManager.Controls"
+                xmlns:ctrl="clr-namespace:KisManager.Controls"
              xmlns:cal="http://www.caliburnproject.org"
              xmlns:control="http://metro.mahapps.com/winfx/xaml/controls"
              mc:Ignorable="d" 
@@ -27,10 +27,10 @@
                         <Setter Property="Margin" Value="2"/>
                     </Style>
                 </StackPanel.Resources>
-                <Label>BOM编码</Label>
-                <TextBox Width="120" Text="{Binding Condition.BomNo}"></TextBox>
-                <Label>成品编码</Label>
-                <TextBox Width="120" Text="{Binding Condition.ProductNo}"></TextBox>
+                <Label>物料编码</Label>
+                <TextBox Width="240" Text="{Binding Condition.ItemNo}" ToolTip="输入多个用逗号隔开" control:TextBoxHelper.Watermark="输入多个用逗号隔开" control:TextBoxHelper.ClearTextButton="True"></TextBox>
+                <Label>需用量</Label>
+                <control:NumericUpDown Width="120" Value="{Binding Condition.ItemCount}"></control:NumericUpDown>
                 <Label>仓库</Label>
                 <ComboBox ItemsSource="{Binding StorageList}" SelectedValue="{Binding Condition.StockId}" DisplayMemberPath="Item1" SelectedValuePath="Item2"></ComboBox>
                 <Label>年度</Label>
@@ -47,13 +47,12 @@
                 <DataGrid ItemsSource="{Binding Paged.Data}" AutoGenerateColumns="False" IsReadOnly="True" CanUserAddRows="False" CanUserDeleteRows="False" >
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="序号" Binding="{Binding Index}" />
-                        <DataGridTextColumn Header="BOM编号" Binding="{Binding BomSn}" />
-                        <DataGridTextColumn Header="半成品/成品编码" Binding="{Binding BomItemSn}" />
                         <DataGridTextColumn Header="物料编号" Binding="{Binding ItemSn}" />
                         <DataGridTextColumn Header="物料描述" Binding="{Binding ItemDescription}" />
                         <DataGridTextColumn Header="规格" Binding="{Binding ItemModel}" />
-                        <DataGridTextColumn Header="用量" Binding="{Binding Amount,Converter={StaticResource Round}}" />
-                        <DataGridTextColumn Header="库存数" Binding="{Binding CountOfStorage,Converter={StaticResource Round}}" />
+                        <DataGridTextColumn Header="单位用量" Binding="{Binding Unit}" />
+                        <DataGridTextColumn Header="需用量" Binding="{Binding Amount,Converter={StaticResource Round}}" />
+                        <DataGridTextColumn Header="库存量" Binding="{Binding CountOfStorage,Converter={StaticResource Round}}" />
                         <DataGridTextColumn Header="任务需求数" Binding="{Binding CountOfPlan,Converter={StaticResource Round}}" />
                         <DataGridTextColumn Header="数量差异" Binding="{Binding CountOfDiff,Converter={StaticResource Round}}" />
                         <DataGridTextColumn Header="在途量" Binding="{Binding CountOfOnTheWay,Converter={StaticResource Round}}" />
@@ -65,4 +64,5 @@
             <control:ProgressRing IsActive="{Binding Loading}"></control:ProgressRing>
         </Grid>
     </DockPanel>
+
 </UserControl>

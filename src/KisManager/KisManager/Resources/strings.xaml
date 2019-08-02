@@ -66,4 +66,7 @@
     <sys:String x:Key="ConsignAmount">含税金额</sys:String>
 
 
+    <sys:String x:Key="ItemAnalysis">物料分析</sys:String>
+
+
 </ResourceDictionary>

@@ -12,5 +12,6 @@ namespace KisManager.Dal
     {
         IEnumerable<t_Stock> GetStockes();
         Paged<IcBomItem> QueryIcBomReport(Pagin<IcBomReportQuery> pagin);
+        Paged<IcItemUsage> QueryItemUsage(Pagin<IcItemUsageQuery> pagin);
     }
 }

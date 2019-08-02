@@ -43,6 +43,12 @@
                                 <TextBlock Text="{DynamicResource BomAnalysis}"></TextBlock>
                             </StackPanel>
                         </Button>
+                        <Button cal:Message.Attach="Open('TabItemAnalysisViewModel')" >
+                            <StackPanel>
+                                <icon:PackIconModern HorizontalAlignment="Center" Width="32" Height="25" Kind="Acorn" />
+                                <TextBlock Text="{DynamicResource ItemAnalysis}"></TextBlock>
+                            </StackPanel>
+                        </Button>
                     </StackPanel>
                 </Border>
                 <Border IsEnabled="False">

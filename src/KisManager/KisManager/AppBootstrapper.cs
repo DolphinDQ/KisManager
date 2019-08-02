@@ -50,6 +50,7 @@ namespace KisManager
             //container.PerRequest<IModule, TabSetDepartmentViewModel>(nameof(TabSetDepartmentViewModel));
             //container.PerRequest<IModule, TabSetEmploymentViewModel>(nameof(TabSetEmploymentViewModel));
             container.PerRequest<IModule, TabBomAnalysisViewModel>(nameof(TabBomAnalysisViewModel));
+            container.PerRequest<IModule, TabItemAnalysisViewModel>(nameof(TabItemAnalysisViewModel));
 
         }
 

@@ -1,8 +1,10 @@
-﻿using KisManager.Dal;
+﻿using KisManager;
+using KisManager.Dal;
 using KisManager.Dal.Kis;
 using KisManager.Dal.Query;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,9 +16,12 @@ namespace KisService.Controllers
     public class IcController : ApiController, IKisIcApi
     {
         public KisContext Context { get; }
-        public IcController(KisContext kisContext)
+        public ISqlProvider Sql { get; }
+
+        public IcController(KisContext kisContext, ISqlProvider sql)
         {
             Context = kisContext;
+            Sql = sql;
         }
 
 
@@ -28,6 +33,30 @@ namespace KisService.Controllers
         public IEnumerable<t_Stock> GetStockes()
         {
             return Context.t_Stock.ToArray();
+        }
+
+        public Paged<IcItemUsage> QueryItemUsage(Pagin<IcItemUsageQuery> pagin)
+        {
+            if (pagin == null) return null;
+            if (pagin.Condition==null||string.IsNullOrWhiteSpace( pagin.Condition.ItemNo))
+            {
+                throw new Exception("请输入物料ID");
+            }
+            var condition = pagin.Condition ?? new IcItemUsageQuery();
+
+            var sql = Sql.GetSql("/ic/QueryItemUsage.sql");
+            if (sql == null || string.IsNullOrEmpty(sql.SqlCommand))
+            {
+                Console.WriteLine("sql 不存在");
+                throw new Exception("找不到SQL文件。");
+            }
+            var param = new List<SqlParameter>();
+            param.Add(new SqlParameter("p_year", pagin.Condition.Year));
+            param.Add(new SqlParameter("p_month", pagin.Condition.Month));
+            param.Add(new SqlParameter("p_stockId", pagin.Condition.StockId ?? -1));
+            param.Add(new SqlParameter("p_useQty", pagin.Condition.ItemCount ?? 1));
+            param.Add(new SqlParameter("p_itemId", pagin.Condition.ItemNo));
+            return Context.Database.QueryPaging<IcItemUsage>(sql.SqlCommand, pagin, param.ToArray());
         }
 
         public Paged<IcBomItem> QueryIcBomReport(Pagin<IcBomReportQuery> pagin)
