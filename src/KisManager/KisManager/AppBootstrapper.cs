@@ -72,6 +72,7 @@ namespace KisManager
         protected override void OnStartup(object sender, System.Windows.StartupEventArgs e)
         {
             DisplayRootViewFor<IShell>();
+            container.GetInstance<IConfigProvider>().Load();
             //var kis = container.GetInstance<IKisLogin>();
             //try
             //{
