@@ -22,10 +22,11 @@ namespace KisManager
             return url;
         }
 
-        public static void SetApiUrl(this IConfigProvider provider, string url)
+        public static async void SetApiUrl(this IConfigProvider provider, string url)
         {
             provider.Set(KEY_API_URL, url);
-            provider.Save();
+            await provider.Save();
+            await provider.Load();
         }
     }
 }
